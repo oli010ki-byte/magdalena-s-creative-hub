@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LogOut, Shield } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
   { name: "Strona główna", path: "/" },
@@ -16,6 +17,12 @@ const navItems = [
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, isAdmin, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    setIsOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border/50">
@@ -46,6 +53,28 @@ const Navigation = () => {
                 )}
               </Link>
             ))}
+            
+            {user ? (
+              <div className="flex items-center gap-3">
+                {isAdmin && (
+                  <span className="flex items-center gap-1 text-xs text-soft-gold bg-soft-gold/10 px-2 py-1 rounded-full">
+                    <Shield className="w-3 h-3" />
+                    Admin
+                  </span>
+                )}
+                <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                  <LogOut className="w-4 h-4" />
+                  Wyloguj
+                </Button>
+              </div>
+            ) : (
+              <Button asChild variant="outline" size="sm">
+                <Link to="/auth">
+                  <LogIn className="w-4 h-4" />
+                  Zaloguj
+                </Link>
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,6 +113,33 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {user ? (
+                <>
+                  {isAdmin && (
+                    <span className="flex items-center gap-1 text-xs text-soft-gold bg-soft-gold/10 px-4 py-2 rounded-lg w-fit">
+                      <Shield className="w-3 h-3" />
+                      Zalogowany jako Admin
+                    </span>
+                  )}
+                  <button
+                    onClick={handleSignOut}
+                    className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary/50 text-left flex items-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Wyloguj
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/auth"
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary/50 flex items-center gap-2"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Zaloguj
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

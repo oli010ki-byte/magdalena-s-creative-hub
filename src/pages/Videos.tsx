@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, X, Play } from "lucide-react";
+import { Plus, Trash2, X, Play, LogIn } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useDataStore, Video } from "@/store/dataStore";
-import { toast } from "@/hooks/use-toast";
+import { useVideos, useAddVideo, useDeleteVideo, Video } from "@/hooks/useVideos";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Videos = () => {
-  const { videos, addVideo, removeVideo } = useDataStore();
+  const { data: videos = [], isLoading } = useVideos();
+  const addVideo = useAddVideo();
+  const deleteVideo = useDeleteVideo();
+  const { isAdmin, user } = useAuth();
+
   const [isAddingVideo, setIsAddingVideo] = useState(false);
   const [playingVideo, setPlayingVideo] = useState<Video | null>(null);
   const [formData, setFormData] = useState({
@@ -25,7 +30,6 @@ const Videos = () => {
   };
 
   const convertToEmbedUrl = (url: string) => {
-    // Convert YouTube watch URL to embed URL
     if (url.includes("youtube.com/watch?v=")) {
       const videoId = url.split("v=")[1]?.split("&")[0];
       return `https://www.youtube.com/embed/${videoId}`;
@@ -39,23 +43,19 @@ const Videos = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title || !formData.url) {
-      toast({ title: "Wypełnij wymagane pola", variant: "destructive" });
-      return;
-    }
+    if (!formData.title || !formData.url) return;
 
-    addVideo({
-      ...formData,
+    addVideo.mutate({
+      title: formData.title,
       url: convertToEmbedUrl(formData.url),
       thumbnail: formData.thumbnail || "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400",
+      description: formData.description || null,
     });
-    toast({ title: "Film dodany!" });
     resetForm();
   };
 
   const handleDelete = (id: string) => {
-    removeVideo(id);
-    toast({ title: "Film usunięty" });
+    deleteVideo.mutate(id);
   };
 
   return (
@@ -76,15 +76,27 @@ const Videos = () => {
             <p className="text-muted-foreground max-w-xl mx-auto mb-8">
               Oglądaj materiały wideo i rozwijaj się każdego dnia
             </p>
-            <Button variant="gold" onClick={() => setIsAddingVideo(true)}>
-              <Plus className="w-5 h-5" />
-              Dodaj film
-            </Button>
+            
+            {isAdmin && (
+              <Button variant="gold" onClick={() => setIsAddingVideo(true)}>
+                <Plus className="w-5 h-5" />
+                Dodaj film
+              </Button>
+            )}
+            
+            {!user && (
+              <Button asChild variant="outline">
+                <Link to="/auth">
+                  <LogIn className="w-5 h-5" />
+                  Panel admina
+                </Link>
+              </Button>
+            )}
           </motion.div>
 
           {/* Add Video Modal */}
           <AnimatePresence>
-            {isAddingVideo && (
+            {isAddingVideo && isAdmin && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -153,7 +165,7 @@ const Videos = () => {
                       <Button type="button" variant="outline" className="flex-1" onClick={resetForm}>
                         Anuluj
                       </Button>
-                      <Button type="submit" variant="gold" className="flex-1">
+                      <Button type="submit" variant="gold" className="flex-1" disabled={addVideo.isPending}>
                         Dodaj
                       </Button>
                     </div>
@@ -202,67 +214,80 @@ const Videos = () => {
             )}
           </AnimatePresence>
 
-          {/* Videos Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {videos.map((video, index) => (
-                <motion.div
-                  key={video.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
-                >
-                  <div
-                    className="aspect-video relative overflow-hidden cursor-pointer"
-                    onClick={() => setPlayingVideo(video)}
-                  >
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="w-16 h-16 rounded-full bg-card/90 flex items-center justify-center">
-                        <Play className="w-8 h-8 text-accent fill-accent" />
-                      </div>
-                    </div>
-                    <Button
-                      variant="warm"
-                      size="icon"
-                      className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(video.id);
-                      }}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                      {video.title}
-                    </h3>
-                    {video.description && (
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {video.description}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+          {/* Loading State */}
+          {isLoading && (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground">Ładowanie filmów...</p>
+            </div>
+          )}
 
-          {videos.length === 0 && (
+          {/* Videos Grid */}
+          {!isLoading && (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AnimatePresence mode="popLayout">
+                {videos.map((video, index) => (
+                  <motion.div
+                    key={video.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
+                  >
+                    <div
+                      className="aspect-video relative overflow-hidden cursor-pointer"
+                      onClick={() => setPlayingVideo(video)}
+                    >
+                      <img
+                        src={video.thumbnail || "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400"}
+                        alt={video.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="w-16 h-16 rounded-full bg-card/90 flex items-center justify-center">
+                          <Play className="w-8 h-8 text-accent fill-accent" />
+                        </div>
+                      </div>
+                      {isAdmin && (
+                        <Button
+                          variant="warm"
+                          size="icon"
+                          className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(video.id);
+                          }}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                        {video.title}
+                      </h3>
+                      {video.description && (
+                        <p className="text-sm text-muted-foreground line-clamp-2">
+                          {video.description}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
+
+          {!isLoading && videos.length === 0 && (
             <div className="text-center py-20">
               <p className="text-muted-foreground mb-4">Brak filmów</p>
-              <Button variant="gold" onClick={() => setIsAddingVideo(true)}>
-                <Plus className="w-5 h-5" />
-                Dodaj pierwszy film
-              </Button>
+              {isAdmin && (
+                <Button variant="gold" onClick={() => setIsAddingVideo(true)}>
+                  <Plus className="w-5 h-5" />
+                  Dodaj pierwszy film
+                </Button>
+              )}
             </div>
           )}
         </div>
