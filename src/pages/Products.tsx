@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload, Image } from "lucide-react";
+import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { useProducts, useAddProduct, useUpdateProduct, useDeleteProduct, Product
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useCartStore } from "@/stores/cartStore";
 
 const Products = () => {
   const { data: products = [], isLoading } = useProducts();
@@ -18,6 +19,7 @@ const Products = () => {
   const deleteProduct = useDeleteProduct();
   const { isAdmin, user } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { addItem } = useCartStore();
 
   const [isAddingProduct, setIsAddingProduct] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
@@ -378,9 +380,16 @@ const Products = () => {
                         <span className="font-serif text-xl font-bold text-accent">
                           {product.price} PLN
                         </span>
-                        <Button variant="outline" size="sm">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => {
+                            addItem(product);
+                            toast.success(`${product.name} dodano do koszyka`);
+                          }}
+                        >
                           <ShoppingCart className="w-4 h-4" />
-                          Kup
+                          Do koszyka
                         </Button>
                       </div>
                     </div>
