@@ -21,7 +21,7 @@ const About = () => {
               </h1>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -45,68 +45,79 @@ const About = () => {
                 className="space-y-6"
               >
                 <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground">
-                  Cześć, jestem Magdalena
+                  Magdalena Zając
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Od lat pomagam ludziom odkrywać ich wewnętrzny potencjał i budować 
-                    autentyczne relacje z samym sobą. Wierzę, że każdy z nas ma w sobie 
-                    niesamowitą moc do zmiany.
+                    Od dziecka towarzyszyła mi wysoka energia, miłość do pasji, sportu, ludzi, 
+                    podróży i dotykania świata tam — gdzie — czuję sercem.
                   </p>
                   <p>
-                    Moja droga do rozwoju osobistego była pełna wyzwań, ale to właśnie 
-                    one nauczyły mnie najwięcej. Dziś dzielę się tą wiedzą przez aplikację 
-                    Me2Me, kursy i indywidualne sesje coachingowe.
+                    Zawsze kiełkowały we mnie poszukiwania. Poszukiwania dobrych relacji i pytanie: 
+                    „jak?" — jak rozumieć, jak budować, jak działać, by móc żyć w zgodzie ze sobą 
+                    i tworzyć to, co czuję intuicją i sercem. Tworzyć to — co prawdziwie wspiera 
+                    i rozpala własny potencjał.
                   </p>
-                  <p>
-                    Jestem certyfikowanym coachem, autorką e-booków i twórczynią 
-                    innowacyjnej aplikacji do samorozwoju. Moją misją jest wspieranie 
-                    innych w drodze do lepszej wersji siebie.
+                  <p className="font-medium text-foreground">
+                    Mentor holistyczny i biznesowy, konsultant edukacyjny, trener, towarzysz — 
+                    to moja pasja, która stała się zawodem.
                   </p>
                 </div>
               </motion.div>
             </div>
 
-            {/* Values */}
+            {/* Extended content */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-card rounded-3xl p-10 border border-border/50"
+              className="space-y-6 text-muted-foreground leading-relaxed mb-16"
             >
-              <h3 className="font-serif text-2xl font-semibold text-foreground mb-8 text-center">
-                Moje wartości
+              <p>
+                Bazuję na nurcie TSR, przez co w swojej pracy koncentruję się na rozwiązaniach, 
+                możliwościach i tym, co już działa — zamiast analizować trudności. Stawiam na małe, 
+                codzienne możliwe na już do wdrożenia kroki, które prowadzą do realnych i trwałych efektów.
+              </p>
+              <p>
+                Łączę psychologię, ekonomię, świadomy ruch, żywienie funkcjonalne i suplementację — 
+                by tworzyć procesy i narzędzia dające długofalową efektywność, stabilność i rozwój 
+                w zgodzie z własnym potencjałem.
+              </p>
+              <p className="font-medium text-foreground">
+                Jestem Twórczynią aplikacji Me2Me — systemu wspierającego codzienny rytm ciała, 
+                emocji, umysłu, a przede wszystkim skuteczności w działaniu.
+              </p>
+              <p>
+                W pracy kieruję się prostotą, wdrażalnością i efektem, który można poczuć w codzienności. 
+                Moje podejście jest wspierające i ukierunkowane na realną zmianę — krok po kroku, 
+                bez presji, w rytmie, który wzmacnia i czuciu, który jest dla mnie priorytetem.
+              </p>
+              <p>
+                We wszystkim co robię kieruję się strategią win-win, wygrany — wygrany, wiedząc, 
+                że tylko wtedy, kiedy dwie strony odczuwają swoje zasoby — powstają długofalowe, 
+                dobre, pożądane efekty, sukcesy i nietuzinkowe projekty.
+              </p>
+            </motion.div>
+
+            {/* Invitation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="bg-card rounded-3xl p-10 border border-border/50 text-center"
+            >
+              <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
+                Zapraszam
               </h3>
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    title: "Autentyczność",
-                    description: "Bycie sobą to pierwszy krok do prawdziwej zmiany",
-                  },
-                  {
-                    title: "Empatia",
-                    description: "Rozumienie siebie i innych buduje głębsze relacje",
-                  },
-                  {
-                    title: "Rozwój",
-                    description: "Każdy dzień to szansa na stanie się lepszą wersją siebie",
-                  },
-                ].map((value, index) => (
-                  <div key={value.title} className="text-center">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-soft-gold/20 to-accent/20 flex items-center justify-center mx-auto mb-4">
-                      <span className="font-serif text-xl font-bold text-accent">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <h4 className="font-serif text-lg font-semibold text-foreground mb-2">
-                      {value.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {value.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <p className="text-lg text-muted-foreground mb-2">
+                Magda
+              </p>
+              <p className="text-soft-gold font-medium">
+                Mentor holistyczny i biznesowy
+              </p>
+              <p className="text-accent font-semibold mt-2">
+                Me2Me
+              </p>
             </motion.div>
           </motion.div>
         </div>
