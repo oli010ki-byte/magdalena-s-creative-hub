@@ -51,19 +51,32 @@ const Me2Me = () => {
               <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
                 Me2Me
               </h1>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Twoja osobista przestrzeń do rozwoju. Aplikacja Me2Me pomaga Ci 
-                budować głębszą relację z samą sobą poprzez codzienne ćwiczenia, 
-                dziennik emocji i spersonalizowane ścieżki rozwoju.
-              </p>
+              <div className="text-lg text-muted-foreground mb-8 leading-relaxed space-y-3">
+                <p>Me2Me</p>
+                <p>
+                  To Aplikacja - 21-31 dni : holistyczne kształtowanie nawyków-
+                  krok po kroku
+                </p>
+                <p>Od Siebie- dla Siebie- z Sobą</p>
+                <p>
+                  Aktywne Ciało- Stabilne emocje- Prawdziwe Relacje: z żywieniem,
+                  wiedzą i świadomością.
+                </p>
+                <p>
+                  Link :
+                  <br />
+                  https://www.me2me.pl/login
+                </p>
+                <p>⬇️</p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="gold" size="lg">
-                  <Smartphone className="w-5 h-5" />
-                  Pobierz aplikację
+                <Button asChild variant="gold" size="lg">
+                  <a href="https://www.me2me.pl/login" target="_blank" rel="noreferrer">
+                    <Smartphone className="w-5 h-5" />
+                    Otwórz aplikację
+                  </a>
                 </Button>
-                <Button variant="outline" size="lg">
-                  Dowiedz się więcej
-                </Button>
+                <Button variant="outline" size="lg">Dowiedz się więcej</Button>
               </div>
             </motion.div>
 
