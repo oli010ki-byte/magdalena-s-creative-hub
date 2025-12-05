@@ -5,6 +5,7 @@ import { Menu, X, LogIn, LogOut, Shield } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import CartButton from "./CartButton";
 
 const navItems = [
   { name: "Strona główna", path: "/" },
@@ -54,6 +55,8 @@ const Navigation = () => {
               </Link>
             ))}
             
+            <CartButton />
+            
             {user ? (
               <div className="flex items-center gap-3">
                 {isAdmin && (
@@ -78,14 +81,16 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
+          <div className="flex items-center gap-2 md:hidden">
+            <CartButton />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          </div>
         </div>
       </div>
 
