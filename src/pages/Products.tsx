@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn } from "lucide-react";
+import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload, Image } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useProducts, useAddProduct, useUpdateProduct, useDeleteProduct, Product } from "@/hooks/useProducts";
 import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Products = () => {
   const { data: products = [], isLoading } = useProducts();
@@ -15,9 +17,11 @@ const Products = () => {
   const updateProduct = useUpdateProduct();
   const deleteProduct = useDeleteProduct();
   const { isAdmin, user } = useAuth();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [isAddingProduct, setIsAddingProduct] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -30,6 +34,40 @@ const Products = () => {
     setFormData({ name: "", description: "", price: "", image: "", category: "" });
     setIsAddingProduct(false);
     setEditingProduct(null);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      toast.error('Proszę wybrać plik obrazu');
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+      
+      const { error: uploadError } = await supabase.storage
+        .from('product-images')
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('product-images')
+        .getPublicUrl(fileName);
+
+      setFormData({ ...formData, image: publicUrl });
+      toast.success('Zdjęcie zostało przesłane');
+    } catch (error) {
+      console.error('Upload error:', error);
+      toast.error('Błąd podczas przesyłania zdjęcia');
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -120,7 +158,7 @@ const Products = () => {
                   initial={{ scale: 0.95, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.95, opacity: 0 }}
-                  className="bg-card rounded-2xl p-6 w-full max-w-md border border-border shadow-card"
+                  className="bg-card rounded-2xl p-6 w-full max-w-md border border-border shadow-card max-h-[90vh] overflow-y-auto"
                 >
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="font-serif text-xl font-semibold text-foreground">
@@ -176,21 +214,85 @@ const Products = () => {
                         />
                       </div>
                     </div>
+                    
+                    {/* Image Upload Section */}
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-1 block">
-                        URL zdjęcia
+                      <label className="text-sm font-medium text-foreground mb-2 block">
+                        Zdjęcie produktu
                       </label>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleImageUpload}
+                        accept="image/*"
+                        className="hidden"
+                      />
+                      
+                      {formData.image ? (
+                        <div className="relative">
+                          <img
+                            src={formData.image}
+                            alt="Podgląd"
+                            className="w-full h-40 object-cover rounded-lg border border-border"
+                          />
+                          <div className="absolute top-2 right-2 flex gap-2">
+                            <Button
+                              type="button"
+                              variant="warm"
+                              size="icon"
+                              onClick={() => fileInputRef.current?.click()}
+                              disabled={isUploading}
+                            >
+                              <Edit2 className="w-4 h-4" />
+                            </Button>
+                            <Button
+                              type="button"
+                              variant="warm"
+                              size="icon"
+                              onClick={() => setFormData({ ...formData, image: "" })}
+                            >
+                              <X className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          disabled={isUploading}
+                          className="w-full h-40 border-2 border-dashed border-border rounded-lg flex flex-col items-center justify-center gap-2 hover:border-soft-gold hover:bg-soft-gold/5 transition-colors"
+                        >
+                          {isUploading ? (
+                            <div className="animate-pulse text-muted-foreground">
+                              Przesyłanie...
+                            </div>
+                          ) : (
+                            <>
+                              <Upload className="w-8 h-8 text-muted-foreground" />
+                              <span className="text-sm text-muted-foreground">
+                                Kliknij, aby dodać zdjęcie
+                              </span>
+                            </>
+                          )}
+                        </button>
+                      )}
+                      
+                      <p className="text-xs text-muted-foreground mt-2">
+                        lub wklej URL zdjęcia:
+                      </p>
                       <Input
                         value={formData.image}
                         onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                         placeholder="https://..."
+                        className="mt-1"
                       />
                     </div>
+                    
                     <div className="flex gap-3 pt-4">
                       <Button type="button" variant="outline" className="flex-1" onClick={resetForm}>
                         Anuluj
                       </Button>
-                      <Button type="submit" variant="gold" className="flex-1" disabled={addProduct.isPending || updateProduct.isPending}>
+                      <Button type="submit" variant="gold" className="flex-1" disabled={addProduct.isPending || updateProduct.isPending || isUploading}>
                         {editingProduct ? "Zapisz" : "Dodaj"}
                       </Button>
                     </div>
