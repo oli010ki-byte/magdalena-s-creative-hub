@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import magdaPhoto from "@/assets/magda-photo.jpg";
 
 const About = () => {
   return (
@@ -30,9 +31,9 @@ const About = () => {
               >
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-secondary">
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600"
+                    src={magdaPhoto}
                     alt="Magdalena Zając"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-soft-gold/20 rounded-full blur-2xl" />
