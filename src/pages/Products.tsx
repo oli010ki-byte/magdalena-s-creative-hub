@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useCartStore } from "@/stores/cartStore";
 import foreverCover from "@/assets/forever/forever-cover.png";
+import consultationCover from "@/assets/consultation-cover.png";
 
 const Products = () => {
   const { data: products = [], isLoading } = useProducts();
@@ -371,10 +372,12 @@ const Products = () => {
                 className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
               >
                 <Link to="/products/consultation" className="block">
-                  <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-soft-gold/20 to-accent/10 flex items-center justify-center">
-                    <div className="w-24 h-24 rounded-full bg-card/80 flex items-center justify-center">
-                      <Calendar className="w-12 h-12 text-soft-gold" />
-                    </div>
+                  <div className="aspect-[4/3] relative overflow-hidden bg-secondary/30">
+                    <img
+                      src={consultationCover}
+                      alt="Konsultacja 1:1 z Magdą"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                     <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">
                       Konsultacja
                     </span>

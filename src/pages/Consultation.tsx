@@ -3,6 +3,7 @@ import { ArrowLeft, Calendar, MessageCircle, Mail, Phone, CheckCircle, Clock, He
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import consultationCover from "@/assets/consultation-cover.png";
 import magdaPhoto from "@/assets/magda-photo.jpg";
 
 const consultationBenefits = [
@@ -77,9 +78,9 @@ const Consultation = () => {
             >
               <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-cream to-secondary max-w-md">
                 <img
-                  src={magdaPhoto}
+                  src={consultationCover}
                   alt="Magdalena Zając - Mentor"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover"
                 />
               </div>
               
