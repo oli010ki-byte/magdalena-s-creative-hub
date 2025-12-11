@@ -60,10 +60,12 @@ const Navigation = () => {
             {user ? (
               <div className="flex items-center gap-3">
                 {isAdmin && (
-                  <span className="flex items-center gap-1 text-xs text-soft-gold bg-soft-gold/10 px-2 py-1 rounded-full">
-                    <Shield className="w-3 h-3" />
-                    Admin
-                  </span>
+                  <Button asChild variant="ghost" size="sm" className="text-soft-gold hover:text-soft-gold hover:bg-soft-gold/10">
+                    <Link to="/admin">
+                      <Shield className="w-4 h-4" />
+                      Panel admina
+                    </Link>
+                  </Button>
                 )}
                 <Button variant="ghost" size="sm" onClick={handleSignOut}>
                   <LogOut className="w-4 h-4" />
@@ -122,10 +124,14 @@ const Navigation = () => {
               {user ? (
                 <>
                   {isAdmin && (
-                    <span className="flex items-center gap-1 text-xs text-soft-gold bg-soft-gold/10 px-4 py-2 rounded-lg w-fit">
-                      <Shield className="w-3 h-3" />
-                      Zalogowany jako Admin
-                    </span>
+                    <Link
+                      to="/admin"
+                      onClick={() => setIsOpen(false)}
+                      className="px-4 py-3 rounded-lg text-sm font-medium text-soft-gold bg-soft-gold/10 hover:bg-soft-gold/20 flex items-center gap-2"
+                    >
+                      <Shield className="w-4 h-4" />
+                      Panel admina
+                    </Link>
                   )}
                   <button
                     onClick={handleSignOut}
