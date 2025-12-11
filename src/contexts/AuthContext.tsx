@@ -20,17 +20,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Use server-side RPC function for admin role check instead of direct table query
   const checkAdminRole = async (userId: string) => {
-    const { data, error } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId)
-      .eq("role", "admin")
-      .maybeSingle();
+    try {
+      const { data, error } = await supabase
+        .rpc("has_role", { _user_id: userId, _role: "admin" });
 
-    if (!error && data) {
-      setIsAdmin(true);
-    } else {
+      if (error) {
+        console.error("Error checking admin role:", error);
+        setIsAdmin(false);
+        return;
+      }
+      
+      setIsAdmin(data === true);
+    } catch (err) {
+      console.error("Error in admin role check:", err);
       setIsAdmin(false);
     }
   };

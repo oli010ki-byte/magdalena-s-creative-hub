@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useVideos, useAddVideo, useUpdateVideo, useDeleteVideo, Video } from "@/hooks/useVideos";
+import { toast } from "sonner";
 
 const AdminVideos = () => {
   const { data: videos = [], isLoading } = useVideos();
@@ -20,11 +21,24 @@ const AdminVideos = () => {
     url: "",
     thumbnail: "",
   });
+  const [urlError, setUrlError] = useState<string | null>(null);
 
   const resetForm = () => {
     setFormData({ title: "", description: "", url: "", thumbnail: "" });
+    setUrlError(null);
     setIsAddingVideo(false);
     setEditingVideo(null);
+  };
+
+  // Validate that URL is from a trusted video source (YouTube)
+  const isValidVideoUrl = (url: string): boolean => {
+    try {
+      const urlObj = new URL(url);
+      const validHosts = ['youtube.com', 'www.youtube.com', 'youtu.be', 'm.youtube.com'];
+      return validHosts.includes(urlObj.hostname);
+    } catch {
+      return false;
+    }
   };
 
   const extractYouTubeId = (url: string) => {
@@ -34,15 +48,39 @@ const AdminVideos = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title || !formData.url) return;
+    setUrlError(null);
+
+    // Validate required fields
+    if (!formData.title.trim()) {
+      toast.error("Tytuł jest wymagany");
+      return;
+    }
+
+    if (!formData.url.trim()) {
+      toast.error("URL jest wymagany");
+      return;
+    }
+
+    // Validate URL is from trusted source
+    if (!isValidVideoUrl(formData.url)) {
+      setUrlError("URL musi być linkiem do YouTube (youtube.com lub youtu.be)");
+      toast.error("Nieprawidłowy URL - dozwolone tylko linki YouTube");
+      return;
+    }
 
     const videoId = extractYouTubeId(formData.url);
-    const thumbnail = formData.thumbnail || (videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : "");
+    if (!videoId) {
+      setUrlError("Nie można rozpoznać ID filmu YouTube z podanego URL");
+      toast.error("Nieprawidłowy format URL YouTube");
+      return;
+    }
+
+    const thumbnail = formData.thumbnail || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
     const videoData = {
-      title: formData.title,
-      description: formData.description || null,
-      url: formData.url,
+      title: formData.title.trim(),
+      description: formData.description.trim() || null,
+      url: formData.url.trim(),
       thumbnail,
     };
 
@@ -128,9 +166,16 @@ const AdminVideos = () => {
                   </label>
                   <Input
                     value={formData.url}
-                    onChange={(e) => setFormData({ ...formData, url: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, url: e.target.value });
+                      setUrlError(null);
+                    }}
                     placeholder="https://www.youtube.com/watch?v=..."
+                    className={urlError ? "border-red-500" : ""}
                   />
+                  {urlError && (
+                    <p className="text-sm text-red-500 mt-1">{urlError}</p>
+                  )}
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">
