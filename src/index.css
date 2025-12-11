@@ -11,8 +11,8 @@
     /* #726D6D - main text color */
     --foreground: 0 2% 44%;
 
-    /* #c4bdb0 - card background */
-    --card: 39 15% 73%;
+    /* #c4bdb0 - card background - strong beige */
+    --card: 35 18% 72%;
     --card-foreground: 0 2% 44%;
 
     /* #D8CFC4 - popover background */
