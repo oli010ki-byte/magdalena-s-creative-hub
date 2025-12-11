@@ -1,56 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
 @layer base {
   :root {
-    --background: 40 30% 96%;
-    --foreground: 30 20% 15%;
+    --background: 35 19% 82%;
+    --foreground: 0 2% 44%;
 
-    --card: 40 25% 94%;
-    --card-foreground: 30 20% 15%;
+    --card: 39 15% 73%;
+    --card-foreground: 0 2% 44%;
 
-    --popover: 40 30% 96%;
-    --popover-foreground: 30 20% 15%;
+    --popover: 33 20% 81%;
+    --popover-foreground: 0 2% 44%;
 
-    --primary: 30 40% 35%;
-    --primary-foreground: 40 30% 96%;
+    --primary: 0 2% 44%;
+    --primary-foreground: 36 26% 95%;
 
-    --secondary: 35 25% 88%;
-    --secondary-foreground: 30 20% 20%;
+    --secondary: 33 20% 81%;
+    --secondary-foreground: 0 2% 36%;
 
-    --muted: 35 20% 90%;
-    --muted-foreground: 30 15% 45%;
+    --muted: 37 11% 76%;
+    --muted-foreground: 0 2% 36%;
 
-    --accent: 25 50% 45%;
-    --accent-foreground: 40 30% 96%;
+    --accent: 37 11% 76%;
+    --accent-foreground: 0 2% 32%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 35 20% 85%;
-    --input: 35 20% 85%;
-    --ring: 30 40% 35%;
+    --border: 37 11% 76%;
+    --input: 37 11% 76%;
+    --ring: 0 2% 44%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --cream: 40 35% 92%;
-    --warm-brown: 25 30% 25%;
-    --soft-gold: 35 45% 60%;
-    --light-beige: 38 30% 97%;
+    --cream: 33 20% 81%;
+    --warm-brown: 0 2% 44%;
+    --soft-gold: 39 15% 73%;
+    --light-beige: 35 19% 82%;
     
     /* Gradients */
-    --gradient-warm: linear-gradient(135deg, hsl(40 35% 92%) 0%, hsl(35 25% 88%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(35 45% 60%) 0%, hsl(25 50% 45%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(38 30% 97%) 0%, hsl(40 30% 96%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(35 19% 82%) 0%, hsl(33 20% 81%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(39 15% 73%) 0%, hsl(0 2% 44%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(35 19% 82%) 0%, hsl(33 20% 81%) 100%);
     
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(30 20% 15% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(30 20% 15% / 0.1);
-    --shadow-glow: 0 0 40px hsl(35 45% 60% / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(0 2% 44% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(0 2% 44% / 0.12);
+    --shadow-glow: 0 0 40px hsl(39 15% 73% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,38 +63,38 @@
   }
 
   .dark {
-    --background: 30 15% 10%;
-    --foreground: 40 30% 92%;
+    --background: 0 3% 18%;
+    --foreground: 33 25% 88%;
 
-    --card: 30 15% 12%;
-    --card-foreground: 40 30% 92%;
+    --card: 0 3% 22%;
+    --card-foreground: 33 25% 88%;
 
-    --popover: 30 15% 10%;
-    --popover-foreground: 40 30% 92%;
+    --popover: 0 3% 18%;
+    --popover-foreground: 33 25% 88%;
 
-    --primary: 35 45% 60%;
-    --primary-foreground: 30 15% 10%;
+    --primary: 33 20% 81%;
+    --primary-foreground: 0 2% 22%;
 
-    --secondary: 30 15% 18%;
-    --secondary-foreground: 40 30% 92%;
+    --secondary: 0 2% 26%;
+    --secondary-foreground: 33 25% 88%;
 
-    --muted: 30 15% 18%;
-    --muted-foreground: 35 20% 60%;
+    --muted: 0 2% 26%;
+    --muted-foreground: 33 15% 70%;
 
-    --accent: 35 50% 50%;
-    --accent-foreground: 30 15% 10%;
+    --accent: 39 15% 73%;
+    --accent-foreground: 0 2% 24%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 20%;
-    --input: 30 15% 20%;
-    --ring: 35 45% 60%;
+    --border: 0 2% 26%;
+    --input: 0 2% 26%;
+    --ring: 33 20% 81%;
 
-    --cream: 30 15% 15%;
-    --warm-brown: 40 30% 85%;
-    --soft-gold: 35 45% 55%;
-    --light-beige: 30 15% 12%;
+    --cream: 0 2% 22%;
+    --warm-brown: 33 25% 88%;
+    --soft-gold: 39 15% 73%;
+    --light-beige: 0 3% 18%;
   }
 }
 
