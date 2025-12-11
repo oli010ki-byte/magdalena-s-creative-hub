@@ -11,7 +11,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useCartStore } from "@/stores/cartStore";
-import forever2 from "@/assets/forever/forever-2.png";
+import foreverCover from "@/assets/forever/forever-cover.png";
 
 const Products = () => {
   const { data: products = [], isLoading } = useProducts();
@@ -338,7 +338,7 @@ const Products = () => {
                 <Link to="/products/forever" className="block">
                   <div className="aspect-[4/3] relative overflow-hidden bg-secondary/30">
                     <img
-                      src={forever2}
+                      src={foreverCover}
                       alt="Suplementacja FOREVER"
                       className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                     />
