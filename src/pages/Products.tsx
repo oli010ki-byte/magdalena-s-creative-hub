@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload } from "lucide-react";
+import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useCartStore } from "@/stores/cartStore";
+import forever2 from "@/assets/forever/forever-2.png";
 
 const Products = () => {
   const { data: products = [], isLoading } = useProducts();
@@ -328,6 +329,40 @@ const Products = () => {
           {/* Products Grid */}
           {!isLoading && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Special Forever Product Card */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
+              >
+                <Link to="/products/forever" className="block">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-secondary/30">
+                    <img
+                      src={forever2}
+                      alt="Suplementacja FOREVER"
+                      className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">
+                      Suplementacja
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                      Suplementacja FOREVER
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                      Naturalne suplementy, napoje aloesowe i kosmetyki Forever Living
+                    </p>
+                    <div className="flex items-center justify-end">
+                      <Button variant="gold" size="sm">
+                        <ArrowRight className="w-4 h-4" />
+                        Zobacz produkty
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+
               <AnimatePresence mode="popLayout">
                 {products.map((product, index) => (
                   <motion.div
