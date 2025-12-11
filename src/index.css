@@ -47,7 +47,7 @@
     /* Custom tokens - mapped to user's colors */
     --cream: 33 20% 81%;          /* #D8CFC4 */
     --warm-brown: 0 2% 44%;       /* #726D6D */
-    --soft-gold: 39 15% 73%;      /* #c4bdb0 */
+    --soft-gold: 30 35% 55%;       /* jasny brąz */
     --light-beige: 35 19% 82%;    /* #dad3c9 */
     
     /* Gradients */
@@ -101,7 +101,7 @@
 
     --cream: 0 2% 22%;
     --warm-brown: 33 25% 88%;
-    --soft-gold: 39 15% 73%;
+    --soft-gold: 30 35% 60%;       /* jasny brąz - dark mode */
     --light-beige: 0 3% 18%;
   }
 }
