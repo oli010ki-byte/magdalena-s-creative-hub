@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload, ArrowRight } from "lucide-react";
+import { Plus, Trash2, Edit2, X, ShoppingCart, LogIn, Upload, ArrowRight, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -357,6 +357,39 @@ const Products = () => {
                       <Button variant="gold" size="sm">
                         <ArrowRight className="w-4 h-4" />
                         Zobacz produkty
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+
+              {/* Special Consultation Card */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.05 }}
+                className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
+              >
+                <Link to="/products/consultation" className="block">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-soft-gold/20 to-accent/10 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full bg-card/80 flex items-center justify-center">
+                      <Calendar className="w-12 h-12 text-soft-gold" />
+                    </div>
+                    <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">
+                      Konsultacja
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                      Konsultacja 1:1 z Magdą
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                      Indywidualne spotkanie i strategia dopasowana do Twoich celów
+                    </p>
+                    <div className="flex items-center justify-end">
+                      <Button variant="gold" size="sm">
+                        <ArrowRight className="w-4 h-4" />
+                        Zobacz szczegóły
                       </Button>
                     </div>
                   </div>
