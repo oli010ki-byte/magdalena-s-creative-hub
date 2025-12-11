@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoImage from "@/assets/logo.png";
 
 const Logo = ({ className = "" }: { className?: string }) => {
   return (
@@ -6,10 +7,13 @@ const Logo = ({ className = "" }: { className?: string }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className={`font-serif text-3xl font-bold tracking-tight ${className}`}
+      className={className}
     >
-      <span className="text-primary">M</span>
-      <span className="text-soft-gold">Z</span>
+      <img 
+        src={logoImage} 
+        alt="MZ Logo" 
+        className="h-12 w-auto"
+      />
     </motion.div>
   );
 };
