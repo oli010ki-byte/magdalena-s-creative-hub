@@ -50,6 +50,31 @@ export const useAddVideo = () => {
   });
 };
 
+export const useUpdateVideo = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, ...video }: Partial<Video> & { id: string }) => {
+      const { data, error } = await supabase
+        .from("videos")
+        .update(video)
+        .eq("id", id)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["videos"] });
+      toast({ title: "Film zaktualizowany!" });
+    },
+    onError: (error: Error) => {
+      toast({ title: "Błąd podczas aktualizacji", description: error.message, variant: "destructive" });
+    },
+  });
+};
+
 export const useDeleteVideo = () => {
   const queryClient = useQueryClient();
 
