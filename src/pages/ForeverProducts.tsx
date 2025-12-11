@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -31,68 +31,124 @@ const foreverImages = [
 const ForeverProducts = () => {
   return (
     <Layout>
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
+            className="mb-12"
           >
-            <Button asChild variant="outline" size="sm" className="mb-6">
+            <Button asChild variant="ghost" size="sm" className="mb-8 text-muted-foreground hover:text-foreground">
               <Link to="/products">
                 <ArrowLeft className="w-4 h-4" />
                 Powrót do sklepu
               </Link>
             </Button>
             
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                <Leaf className="w-6 h-6 text-foreground/70" />
+              </div>
+              <span className="text-sm font-medium text-foreground/60 uppercase tracking-wider">
+                Naturalna suplementacja
+              </span>
+            </div>
+            
+            <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-8">
               Suplementacja FOREVER
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mb-8">
-              Odkryj pełną gamę produktów Forever Living - naturalne suplementy diety, 
-              napoje aloesowe i kosmetyki najwyższej jakości. Wszystkie produkty oparte 
-              są na certyfikowanym aloe vera i składnikach naturalnych.
-            </p>
             
-            <div className="bg-card/50 rounded-2xl p-6 border border-border/50 mb-12">
-              <h2 className="font-serif text-xl font-semibold text-foreground mb-3">
-                Chcesz zamówić?
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                Skontaktuj się ze mną, aby dowiedzieć się więcej o produktach Forever 
-                i dobrać odpowiednią suplementację do Twoich potrzeb.
+            {/* CTA Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-secondary/50 rounded-3xl p-8 md:p-10 border border-border/30 mb-16 max-w-3xl"
+            >
+              <p className="text-foreground/80 text-lg leading-relaxed mb-6">
+                Jeśli chcesz zaopatrzyć się w produkty bez zakładania numeru klienta — 
+                wejdź w link gościa do mojego sklepu internetowego, zapraszam serdecznie!
               </p>
-              <Button variant="gold" asChild>
-                <a href="mailto:kontakt@example.com">Skontaktuj się</a>
+              <p className="text-muted-foreground mb-8">
+                Wszystkie produkty dostępne ze zniżką wspierając Magdalenę.
+              </p>
+              <Button variant="gold" size="lg" asChild className="shadow-md hover:shadow-lg transition-shadow">
+                <a 
+                  href="https://thealoeveraco.shop/zm1HDvyX" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="gap-2"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  Przejdź do sklepu FOREVER
+                </a>
               </Button>
-            </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Section Title */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="mb-10"
+          >
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-2">
+              Przykładowe produkty
+            </h2>
+            <p className="text-muted-foreground">
+              Naturalne suplementy, napoje aloesowe i kosmetyki Forever Living
+            </p>
           </motion.div>
 
           {/* Image Gallery */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {foreverImages.map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05 }}
-                className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover:shadow-lg transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + index * 0.05 }}
+                className="group bg-secondary/30 rounded-2xl overflow-hidden border border-border/20 hover:border-border/50 hover:shadow-md transition-all duration-300"
               >
-                <div className="aspect-square relative overflow-hidden bg-secondary/30">
+                <div className="aspect-square relative overflow-hidden bg-gradient-to-b from-background to-secondary/20">
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-4">
-                  <p className="text-sm text-muted-foreground text-center">
+                <div className="p-4 bg-card/50">
+                  <p className="text-sm text-foreground/70 text-center font-medium">
                     {image.alt}
                   </p>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mt-16 text-center"
+          >
+            <p className="text-muted-foreground mb-6">
+              Pełna oferta produktów dostępna w sklepie online
+            </p>
+            <Button variant="outline" size="lg" asChild>
+              <a 
+                href="https://thealoeveraco.shop/zm1HDvyX" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Odwiedź sklep FOREVER
+              </a>
+            </Button>
+          </motion.div>
         </div>
       </section>
     </Layout>
