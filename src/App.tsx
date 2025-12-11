@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Me2Me from "./pages/Me2Me";
 import Products from "./pages/Products";
+import ForeverProducts from "./pages/ForeverProducts";
 import Videos from "./pages/Videos";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/me2me" element={<Me2Me />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/forever" element={<ForeverProducts />} />
             <Route path="/videos" element={<Videos />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
