@@ -10,6 +10,7 @@ import Me2Me from "./pages/Me2Me";
 import Products from "./pages/Products";
 import ForeverProducts from "./pages/ForeverProducts";
 import Videos from "./pages/Videos";
+import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/products" element={<Products />} />
             <Route path="/products/forever" element={<ForeverProducts />} />
             <Route path="/videos" element={<Videos />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />

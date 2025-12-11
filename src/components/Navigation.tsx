@@ -13,6 +13,7 @@ const navItems = [
   { name: "Me2Me", path: "/me2me" },
   { name: "Produkty", path: "/products" },
   { name: "Filmy", path: "/videos" },
+  { name: "Kontakt", path: "/contact" },
 ];
 
 const Navigation = () => {
