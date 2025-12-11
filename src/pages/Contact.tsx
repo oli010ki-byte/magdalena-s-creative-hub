@@ -29,8 +29,8 @@ const socialLinks = [
   {
     name: "Instagram",
     icon: Instagram,
-    url: "https://instagram.com/mentor_cialoiumysl",
-    label: "@mentor_cialoiumysl",
+    url: "https://www.instagram.com/magdalena.zajac.mentor",
+    label: "@magdalena.zajac.mentor",
     color: "hover:bg-pink-500/10 hover:border-pink-500/30",
   },
   {
