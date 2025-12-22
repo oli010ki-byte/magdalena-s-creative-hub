@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, MessageCircle, Mail, Phone, CheckCircle, Clock, Heart } from "lucide-react";
+import { ArrowLeft, Calendar, MessageCircle, Mail, Phone, CheckCircle, Clock, Heart, Video, MapPin, X, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import consultationCover from "@/assets/consultation-cover.png";
-import magdaPhoto from "@/assets/magda-photo.jpg";
 
 const consultationBenefits = [
   "Indywidualne podejście do Twoich potrzeb",
@@ -13,6 +12,30 @@ const consultationBenefits = [
   "Holistyczne spojrzenie na ciało i umysł",
   "Konkretne, wdrażalne kroki do działania",
   "Możliwość kontynuacji współpracy",
+];
+
+const onlinePros = [
+  "Wygoda - spotkanie z dowolnego miejsca",
+  "Oszczędność czasu na dojazd",
+  "Elastyczność terminów",
+  "Nagranie spotkania do odsłuchania",
+];
+
+const onlineCons = [
+  "Brak bezpośredniego kontaktu",
+  "Wymaga stabilnego internetu",
+];
+
+const livePros = [
+  "Bezpośredni kontakt i energia",
+  "Pełniejsza diagnostyka ciała",
+  "Możliwość ćwiczeń na miejscu",
+  "Głębsze połączenie mentorskie",
+];
+
+const liveCons = [
+  "Konieczność dojazdu",
+  "Mniej elastyczne terminy",
 ];
 
 const steps = [
@@ -59,17 +82,19 @@ const Consultation = () => {
               </span>
             </div>
             
-            <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Konsultacja 1:1 z Magdą
+            <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-4">
+              Konsultacja 1:1
             </h1>
+            <p className="text-2xl font-semibold text-soft-gold mb-6">
+              160 - 600 zł
+            </p>
             <p className="text-xl text-muted-foreground max-w-2xl">
-              Indywidualne spotkanie, podczas którego skupimy się na Twoich celach 
-              i wypracujemy strategię działania dopasowaną do Ciebie.
+              Indywidualny mentoring - strategia dopasowana do Twoich potrzeb
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            {/* Left - Photo & Contact */}
+            {/* Left - Photo & About */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -88,13 +113,23 @@ const Consultation = () => {
                 <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
                   Magdalena Zając
                 </h3>
-                <p className="text-soft-gold font-medium mb-2">
+                <p className="text-soft-gold font-medium mb-3">
                   Mentor holistyczny i biznesowy
                 </p>
-                <p className="text-muted-foreground text-sm">
-                  23 lata doświadczenia w pracy z klientami. 
-                  Twórczynią aplikacji Me2Me.
-                </p>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-soft-gold" />
+                    23 lata doświadczenia pracy z człowiekiem
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-soft-gold" />
+                    Twórczyni aplikacji Me2Me
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-soft-gold" />
+                    Mentor w nurcie TSR
+                  </li>
+                </ul>
               </div>
             </motion.div>
 
@@ -127,41 +162,146 @@ const Consultation = () => {
                   ))}
                 </div>
               </div>
-
-              {/* Contact buttons */}
-              <div className="bg-card rounded-2xl p-6 border border-border/50">
-                <h3 className="font-serif text-lg font-semibold text-foreground mb-4">
-                  Skontaktuj się ze mną
-                </h3>
-                <div className="grid gap-3">
-                  <Button variant="gold" size="lg" asChild className="w-full justify-start">
-                    <a href="https://api.whatsapp.com/send?phone=48785669901" target="_blank" rel="noreferrer">
-                      <MessageCircle className="w-5 h-5" />
-                      WhatsApp: +48 785 669 901
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild className="w-full justify-start">
-                    <a href="mailto:formafkkf@gmail.com">
-                      <Mail className="w-5 h-5" />
-                      Email: formafkkf@gmail.com
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild className="w-full justify-start">
-                    <a href="https://www.instagram.com/magdalena.zajac.mentor" target="_blank" rel="noreferrer">
-                      <Phone className="w-5 h-5" />
-                      Instagram: @magdalena.zajac.mentor
-                    </a>
-                  </Button>
-                </div>
-              </div>
             </motion.div>
           </div>
+
+          {/* Consultation Options - Online vs Live */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="grid md:grid-cols-2 gap-6 mb-16"
+          >
+            {/* Online Option */}
+            <div className="bg-card rounded-3xl p-8 border border-border/50">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <Video className="w-6 h-6 text-soft-gold" />
+                </div>
+                <h3 className="font-serif text-2xl font-semibold text-foreground">
+                  Konsultacja Online
+                </h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-secondary/30 rounded-xl p-4">
+                  <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Plusy
+                  </h4>
+                  <ul className="space-y-2">
+                    {onlinePros.map((pro) => (
+                      <li key={pro} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 flex-shrink-0" />
+                        {pro}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="bg-secondary/30 rounded-xl p-4">
+                  <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <X className="w-4 h-4 text-red-500" />
+                    Minusy
+                  </h4>
+                  <ul className="space-y-2">
+                    {onlineCons.map((con) => (
+                      <li key={con} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-1.5 flex-shrink-0" />
+                        {con}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t border-border/50 pt-6">
+                  <h4 className="font-semibold text-foreground mb-4">Kontakt:</h4>
+                  <div className="space-y-2">
+                    <a href="https://api.whatsapp.com/send?phone=48785669901" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      <MessageCircle className="w-4 h-4 text-soft-gold" />
+                      WhatsApp: +48 785 669 901
+                    </a>
+                    <a href="mailto:magda@me2me.pl" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      <Mail className="w-4 h-4 text-soft-gold" />
+                      magda@me2me.pl
+                    </a>
+                    <a href="https://www.instagram.com/magdalena.zajac.mentor" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      <Instagram className="w-4 h-4 text-soft-gold" />
+                      Magdalena Zając Mentor holistyczny
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Live Option */}
+            <div className="bg-card rounded-3xl p-8 border border-border/50">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-soft-gold" />
+                </div>
+                <h3 className="font-serif text-2xl font-semibold text-foreground">
+                  Konsultacja na żywo
+                </h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-secondary/30 rounded-xl p-4">
+                  <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Plusy
+                  </h4>
+                  <ul className="space-y-2">
+                    {livePros.map((pro) => (
+                      <li key={pro} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 flex-shrink-0" />
+                        {pro}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="bg-secondary/30 rounded-xl p-4">
+                  <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <X className="w-4 h-4 text-red-500" />
+                    Minusy
+                  </h4>
+                  <ul className="space-y-2">
+                    {liveCons.map((con) => (
+                      <li key={con} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-1.5 flex-shrink-0" />
+                        {con}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t border-border/50 pt-6">
+                  <h4 className="font-semibold text-foreground mb-4">Kontakt:</h4>
+                  <div className="space-y-2">
+                    <a href="https://api.whatsapp.com/send?phone=48785669901" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      <MessageCircle className="w-4 h-4 text-soft-gold" />
+                      WhatsApp: +48 785 669 901
+                    </a>
+                    <a href="mailto:magda@me2me.pl" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      <Mail className="w-4 h-4 text-soft-gold" />
+                      magda@me2me.pl
+                    </a>
+                    <a href="https://www.instagram.com/magdalena.zajac.mentor" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      <Instagram className="w-4 h-4 text-soft-gold" />
+                      Magdalena Zając Mentor holistyczny
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Benefits */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.5 }}
             className="bg-card rounded-3xl p-8 md:p-10 border border-border/50"
           >
             <div className="flex items-center gap-3 mb-6">
@@ -177,7 +317,7 @@ const Consultation = () => {
                   key={benefit}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + index * 0.05 }}
+                  transition={{ delay: 0.6 + index * 0.05 }}
                   className="flex items-start gap-3 p-4 bg-secondary/30 rounded-xl"
                 >
                   <CheckCircle className="w-5 h-5 text-soft-gold flex-shrink-0 mt-0.5" />
@@ -191,7 +331,7 @@ const Consultation = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.7 }}
             className="mt-12 text-center"
           >
             <p className="text-muted-foreground mb-6">
