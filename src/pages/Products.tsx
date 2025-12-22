@@ -330,45 +330,10 @@ const Products = () => {
           {/* Products Grid */}
           {!isLoading && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Special Forever Product Card */}
+              {/* Special Consultation Card - First */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
-              >
-                <Link to="/products/forever" className="block">
-                  <div className="aspect-[4/3] relative overflow-hidden bg-secondary/30">
-                    <img
-                      src={foreverCover}
-                      alt="Suplementacja FOREVER"
-                      className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">
-                      Suplementacja
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                      Suplementacja FOREVER
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                      Naturalne suplementy, napoje aloesowe i kosmetyki Forever Living
-                    </p>
-                    <div className="flex items-center justify-end">
-                      <Button variant="gold" size="sm">
-                        <ArrowRight className="w-4 h-4" />
-                        Zobacz produkty
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-
-              {/* Special Consultation Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.05 }}
                 className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
               >
                 <Link to="/products/consultation" className="block">
@@ -381,18 +346,56 @@ const Products = () => {
                     <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">
                       Konsultacja
                     </span>
+                    <span className="absolute top-3 right-3 px-3 py-1 bg-soft-gold text-foreground rounded-full text-xs font-bold">
+                      160-600 zł
+                    </span>
                   </div>
                   <div className="p-5">
                     <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
-                      Konsultacja 1:1 z Magdą
+                      Konsultacja 1:1
                     </h3>
                     <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                      Indywidualne spotkanie i strategia dopasowana do Twoich celów
+                      Indywidualny mentoring - strategia dopasowana do Twoich potrzeb
                     </p>
                     <div className="flex items-center justify-end">
                       <Button variant="gold" size="sm">
                         <ArrowRight className="w-4 h-4" />
                         Zobacz szczegóły
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+
+              {/* Special Forever Product Card */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.05 }}
+                className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover-lift"
+              >
+                <Link to="/products/forever" className="block">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-secondary/30">
+                    <img
+                      src={foreverCover}
+                      alt="Suplementacja na bazie natury"
+                      className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">
+                      Suplementacja
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                      Suplementacja na bazie natury
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                      Forever Living Products: napoje aloesowe, suplementy, kosmetyki, zestawy oczyszczające i wzmacniające
+                    </p>
+                    <div className="flex items-center justify-end">
+                      <Button variant="gold" size="sm">
+                        <ArrowRight className="w-4 h-4" />
+                        Zobacz produkty
                       </Button>
                     </div>
                   </div>

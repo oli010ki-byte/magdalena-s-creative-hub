@@ -75,6 +75,30 @@ const Me2Me = () => {
                   <br />
                   <span className="text-foreground/60">z żywieniem, wiedzą i świadomością</span>
                 </p>
+                
+                <div className="bg-card/80 rounded-2xl p-5 border border-border/30 mt-4">
+                  <p className="text-sm font-medium text-foreground mb-3">
+                    Na każdy dzień masz rozpisane:
+                  </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
+                      Aktywność: Stretching (15 min) + PowerBody (15 min)
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
+                      Plan żywienia i suplementacji
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
+                      Tematyczne prowadzenie mentalne
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
+                      Dla chętnych: oczyszczenie
+                    </li>
+                  </ul>
+                </div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">

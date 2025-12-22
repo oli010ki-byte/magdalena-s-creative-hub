@@ -29,7 +29,7 @@ const Index = () => {
               className="inline-flex items-center gap-2 bg-cream px-4 py-2 rounded-full text-sm text-muted-foreground mb-8"
             >
               <Sparkles className="w-4 h-4 text-soft-gold" />
-              Witaj w moim świecie
+              Witaj w mojej przestrzeni
             </motion.div>
 
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight">
@@ -37,9 +37,16 @@ const Index = () => {
               <span className="block text-gradient">Zając</span>
             </h1>
 
+            <p className="text-soft-gold font-medium text-xl mb-4">
+              Mentor holistyczny i biznesowy
+            </p>
+
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Tworzę przestrzeń do rozwoju osobistego. Poznaj aplikację Me2Me, 
-              odkryj moje produkty i dołącz do społeczności osób, które chcą więcej od życia.
+              Tworzę przestrzeń holistycznego zadbania o siebie w obszarach: 
+              <span className="block mt-2 font-medium text-foreground">
+                Aktywność • Funkcjonalne żywienie • Suplementacja na bazie natury • Mental - rozwój osobisty
+              </span>
+              <span className="block mt-2 text-soft-gold">Mentor w nurcie TSR</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
