@@ -297,7 +297,7 @@ const Products = () => {
                   <div className="aspect-[4/3] relative overflow-hidden bg-secondary/30">
                     <img src={consultationCover} alt="Konsultacja 1:1 z Magdą" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <span className="absolute top-3 left-3 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">Mentoring 1:1</span>
-                    <span className="absolute top-3 right-3 px-3 py-1 bg-soft-gold text-foreground rounded-full text-xs font-bold">160 zł</span>
+                    <span className="absolute top-3 right-3 px-3 py-1 bg-soft-gold text-foreground rounded-full text-xs font-bold bg-[#cecac0]">160 zł</span>
                   </div>
                   <div className="p-5">
                     <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
