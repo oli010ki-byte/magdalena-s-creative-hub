@@ -51,7 +51,7 @@ const Index = () => {
               <span className="block mt-2 font-medium text-foreground">
                 Aktywność • Funkcjonalne żywienie • Suplementacja na bazie natury • Mental - rozwój osobisty
               </span>
-              <span className="inline-block mt-2 text-[#a09283] bg-white px-4 py-2 rounded-full">Mentor w nurcie TSR</span>
+              <span className="inline-block mt-2 text-[#a09283] px-4 py-2 rounded-full bg-white">Mentor w nurcie TSR</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
