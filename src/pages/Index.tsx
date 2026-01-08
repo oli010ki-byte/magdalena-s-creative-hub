@@ -39,7 +39,7 @@ const Index = () => {
 
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight">
               Magdalena
-              <span className="block text-gradient pb-2">Zając</span>
+              <span className="block text-gradient pb-[9px]">Zając</span>
             </h1>
 
             <p className="font-medium mb-4 text-[#a09283] bg-white px-4 py-2 rounded-full inline-block">
