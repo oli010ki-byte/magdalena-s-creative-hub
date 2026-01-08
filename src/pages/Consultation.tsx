@@ -86,7 +86,7 @@ const Consultation = () => {
               Konsultacja 1:1
             </h1>
             <p className="text-2xl font-semibold text-soft-gold mb-6">
-              160 - 600 zł
+              od 160 zł
             </p>
             <p className="text-xl text-muted-foreground max-w-2xl">
               Indywidualny mentoring - strategia dopasowana do Twoich potrzeb
