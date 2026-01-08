@@ -42,7 +42,7 @@ const Index = () => {
               <span className="block text-gradient">Zając</span>
             </h1>
 
-            <p className="text-soft-gold font-medium mb-4 text-[sidebar-primary-foreground] text-white">
+            <p className="text-soft-gold font-medium mb-4 text-[sidebar-primary-foreground] bg-white text-[#f6f3ef]">
               Mentor holistyczny i biznesowy
             </p>
 
@@ -51,7 +51,7 @@ const Index = () => {
               <span className="block mt-2 font-medium text-foreground">
                 Aktywność • Funkcjonalne żywienie • Suplementacja na bazie natury • Mental - rozwój osobisty
               </span>
-              <span className="block mt-2 text-soft-gold text-[#513324]">Mentor w nurcie TSR</span>
+              <span className="block mt-2 text-soft-gold bg-primary-foreground text-[#a09283]">Mentor w nurcie TSR</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
