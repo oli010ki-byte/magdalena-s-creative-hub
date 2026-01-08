@@ -42,7 +42,7 @@ const Index = () => {
               <span className="block text-gradient">Zając</span>
             </h1>
 
-            <p className="text-soft-gold font-medium mb-4 text-[sidebar-primary-foreground] bg-white text-[#f6f3ef]">
+            <p className="font-medium mb-4 text-[#a09283] bg-white px-4 py-2 rounded-full inline-block">
               Mentor holistyczny i biznesowy
             </p>
 
