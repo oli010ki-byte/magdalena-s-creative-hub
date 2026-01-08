@@ -15,7 +15,7 @@ const About = () => {
           duration: 0.6
         }} className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <span className="inline-block text-sm font-medium text-soft-gold mb-4 text-[#754629]">
+              <span className="inline-block text-sm font-medium text-soft-gold mb-4 text-[#a09283] bg-[#dad3c8]">
                 Poznaj mnie
               </span>
               <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
