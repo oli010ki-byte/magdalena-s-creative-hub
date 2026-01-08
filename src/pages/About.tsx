@@ -1,20 +1,21 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import magdaPhoto from "@/assets/magda-photo.jpg";
-
 const About = () => {
-  return (
-    <Layout>
+  return <Layout>
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.6
+        }} className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <span className="inline-block text-sm font-medium text-soft-gold mb-4">
+              <span className="inline-block text-sm font-medium text-soft-gold mb-4 text-[#754629]">
                 Poznaj mnie
               </span>
               <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
@@ -23,28 +24,32 @@ const About = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              x: -20
+            }} animate={{
+              opacity: 1,
+              x: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.2
+            }} className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-secondary">
-                  <img
-                    src={magdaPhoto}
-                    alt="Magdalena Zając"
-                    className="w-full h-full object-cover object-top"
-                  />
+                  <img src={magdaPhoto} alt="Magdalena Zając" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-soft-gold/20 rounded-full blur-2xl" />
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="space-y-6"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              x: 20
+            }} animate={{
+              opacity: 1,
+              x: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.3
+            }} className="space-y-6">
                 <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground">
                   Magdalena Zając
                 </h2>
@@ -68,12 +73,16 @@ const About = () => {
             </div>
 
             {/* Extended content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-6 text-muted-foreground leading-relaxed mb-16 -mt-2"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.6,
+            delay: 0.4
+          }} className="space-y-6 text-muted-foreground leading-relaxed mb-16 -mt-2">
               <p>
                 Bazuję na nurcie TSR, przez co w swojej pracy koncentruję się na rozwiązaniach, 
                 możliwościach i tym, co już działa — zamiast analizować trudności. Stawiam na małe, 
@@ -101,12 +110,16 @@ const About = () => {
             </motion.div>
 
             {/* Invitation */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="bg-card rounded-3xl p-10 border border-border/50 text-center"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.6,
+            delay: 0.5
+          }} className="bg-card rounded-3xl p-10 border border-border/50 text-center">
               <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
                 Zapraszam
               </h3>
@@ -123,8 +136,6 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default About;
