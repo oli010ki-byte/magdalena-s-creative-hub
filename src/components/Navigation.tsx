@@ -48,7 +48,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-8">
             {navItems.map(item => <Link key={item.path} to={item.path} className={`relative text-sm font-medium transition-colors duration-300 ${location.pathname === item.path ? "text-primary" : "text-muted-foreground hover:text-primary"}`}>
                 {item.name}
-                {location.pathname === item.path && <motion.div layoutId="activeNav" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-soft-gold rounded-full text-[#442d1d]" />}
+                {location.pathname === item.path && <motion.div layoutId="activeNav" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-soft-gold rounded-full text-destructive bg-[#a09283]" />}
               </Link>)}
             
             <CartButton />

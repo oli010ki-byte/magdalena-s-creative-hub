@@ -127,7 +127,7 @@ const Products = () => {
           opacity: 1,
           y: 0
         }} className="text-center mb-12">
-            <span className="inline-block text-sm font-medium text-soft-gold mb-4">
+            <span className="inline-block text-sm font-medium text-soft-gold mb-4 text-[#a09283]">
               Sklep
             </span>
             <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
