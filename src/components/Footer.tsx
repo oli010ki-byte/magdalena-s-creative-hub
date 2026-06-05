@@ -127,17 +127,34 @@ const Footer = () => (
         >
           © {new Date().getFullYear()} Magdalena Zając. Wszelkie prawa zastrzeżone.
         </p>
-        <a
-          href="https://www.me2me.pl/login"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium"
-          style={{ fontSize: "11px", color: "rgba(28,22,16,0.35)", transition: "color 150ms ease" }}
-          onMouseEnter={e => (e.currentTarget.style.color = C.espresso)}
-          onMouseLeave={e => (e.currentTarget.style.color = "rgba(28,22,16,0.35)")}
-        >
-          Aplikacja Me2Me →
-        </a>
+        <div className="flex items-center gap-4">
+          {[
+            { label: "Polityka prywatności", to: "/polityka-prywatnosci" },
+            { label: "Regulamin",             to: "/regulamin" },
+          ].map(item => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="font-light"
+              style={{ fontSize: "12px", color: "rgba(28,22,16,0.35)", transition: "color 150ms ease" }}
+              onMouseEnter={e => (e.currentTarget.style.color = C.espresso)}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(28,22,16,0.35)")}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href="https://www.me2me.pl/login"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium"
+            style={{ fontSize: "12px", color: "rgba(28,22,16,0.35)", transition: "color 150ms ease" }}
+            onMouseEnter={e => (e.currentTarget.style.color = C.espresso)}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(28,22,16,0.35)")}
+          >
+            Aplikacja Me2Me →
+          </a>
+        </div>
       </div>
     </div>
   </footer>

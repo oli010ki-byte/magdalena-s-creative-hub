@@ -15,6 +15,8 @@ import Videos from "./pages/Videos";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,9 +36,11 @@ const AnimatedRoutes = () => {
         <Route path="/products/consultation" element={<Consultation />} />
         <Route path="/videos"               element={<Videos />} />
         <Route path="/contact"              element={<Contact />} />
-        <Route path="/auth"                 element={<Auth />} />
-        <Route path="/admin"                element={<Admin />} />
-        <Route path="*"                     element={<NotFound />} />
+        <Route path="/auth"                     element={<Auth />} />
+        <Route path="/admin"                    element={<Admin />} />
+        <Route path="/polityka-prywatnosci"     element={<PrivacyPolicy />} />
+        <Route path="/regulamin"                element={<Terms />} />
+        <Route path="*"                         element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );

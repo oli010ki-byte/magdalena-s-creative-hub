@@ -182,13 +182,58 @@ const Me2Me = () => {
               >
                 <div
                   className="aspect-[9/19] rounded-[calc(2.8rem-6px)] overflow-hidden"
-                  style={{ backgroundColor: C.parchment }}
+                  style={{ backgroundColor: C.cream }}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400"
-                    alt="Me2Me App"
-                    className="w-full h-full object-cover"
-                  />
+                  <svg viewBox="0 0 200 430" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                    {/* Screen background */}
+                    <rect width="200" height="430" fill={C.cream}/>
+                    {/* Pill notch */}
+                    <rect x="70" y="12" width="60" height="8" rx="4" fill={C.parchment}/>
+                    {/* App header */}
+                    <rect x="20" y="40" width="72" height="7" rx="3.5" fill={C.espresso} opacity="0.75"/>
+                    <rect x="20" y="55" width="46" height="5" rx="2.5" fill={C.gold} opacity="0.65"/>
+                    {/* Progress ring placeholder */}
+                    <circle cx="162" cy="50" r="20" stroke={C.parchment} strokeWidth="3.5" fill="none"/>
+                    <circle cx="162" cy="50" r="20" stroke={C.gold} strokeWidth="3.5" strokeDasharray="80 46" strokeDashoffset="20" strokeLinecap="round" fill="none"/>
+                    <rect x="154" y="45" width="16" height="9" rx="4.5" fill={C.espresso} opacity="0.45"/>
+                    {/* Day progress track */}
+                    <rect x="20" y="86" width="160" height="6" rx="3" fill={C.parchment}/>
+                    <rect x="20" y="86" width="112" height="6" rx="3" fill={C.gold} opacity="0.5"/>
+                    <rect x="20" y="99" width="38" height="4" rx="2" fill={C.espresso} opacity="0.18"/>
+                    <rect x="152" y="99" width="28" height="4" rx="2" fill={C.espresso} opacity="0.18"/>
+                    {/* Card 1 */}
+                    <rect x="16" y="116" width="168" height="66" rx="14" fill={C.ivory}/>
+                    <rect x="30" y="130" width="56" height="5" rx="2.5" fill={C.espresso} opacity="0.6"/>
+                    <rect x="30" y="142" width="96" height="5" rx="2.5" fill={C.espresso} opacity="0.24"/>
+                    <rect x="30" y="153" width="72" height="5" rx="2.5" fill={C.espresso} opacity="0.17"/>
+                    <circle cx="160" cy="143" r="13" fill={`${C.gold}22`}/>
+                    <rect x="154" y="138" width="12" height="10" rx="5" fill={C.gold} opacity="0.5"/>
+                    {/* List item 1 */}
+                    <rect x="16" y="194" width="168" height="48" rx="12" fill={C.ivory}/>
+                    <circle cx="38" cy="218" r="11" fill={`${C.gold}22`}/>
+                    <rect x="58" y="212" width="78" height="5" rx="2.5" fill={C.espresso} opacity="0.55"/>
+                    <rect x="58" y="223" width="54" height="4" rx="2" fill={C.espresso} opacity="0.22"/>
+                    <rect x="155" y="213" width="20" height="10" rx="5" fill={`${C.gold}30`}/>
+                    {/* List item 2 */}
+                    <rect x="16" y="248" width="168" height="48" rx="12" fill={C.ivory}/>
+                    <circle cx="38" cy="272" r="11" fill={`${C.gold}22`}/>
+                    <rect x="58" y="266" width="66" height="5" rx="2.5" fill={C.espresso} opacity="0.55"/>
+                    <rect x="58" y="277" width="44" height="4" rx="2" fill={C.espresso} opacity="0.22"/>
+                    <rect x="155" y="267" width="20" height="10" rx="5" fill={`${C.gold}30`}/>
+                    {/* List item 3 */}
+                    <rect x="16" y="302" width="168" height="48" rx="12" fill={C.ivory}/>
+                    <circle cx="38" cy="326" r="11" fill={`${C.gold}22`}/>
+                    <rect x="58" y="320" width="82" height="5" rx="2.5" fill={C.espresso} opacity="0.55"/>
+                    <rect x="58" y="331" width="58" height="4" rx="2" fill={C.espresso} opacity="0.22"/>
+                    <rect x="155" y="321" width="20" height="10" rx="5" fill={`${C.gold}30`}/>
+                    {/* Bottom nav bar */}
+                    <rect x="16" y="362" width="168" height="42" rx="14" fill={C.parchment}/>
+                    <circle cx="54" cy="383" r="8" fill={C.gold} opacity="0.3"/>
+                    <rect x="95" y="377" width="10" height="12" rx="3" fill={C.espresso} opacity="0.2"/>
+                    <circle cx="146" cy="383" r="8" fill={C.espresso} opacity="0.08"/>
+                    {/* Home indicator */}
+                    <rect x="74" y="418" width="52" height="4" rx="2" fill={C.espresso} opacity="0.14"/>
+                  </svg>
                 </div>
               </div>
             </motion.div>
