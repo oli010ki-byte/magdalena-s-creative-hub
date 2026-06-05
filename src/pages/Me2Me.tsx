@@ -218,73 +218,73 @@ const Me2Me = () => {
                     <text x="193.5" y="53.5" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8" fontWeight="700" fill="#9C7B59">MZ</text>
 
                     {/* Progress hero card */}
-                    <rect x="12" y="67" width="196" height="108" rx="20" fill="rgba(247,241,232,0.05)" stroke="rgba(247,241,232,0.07)" strokeWidth="1"/>
+                    <rect x="12" y="67" width="196" height="112" rx="20" fill="rgba(247,241,232,0.05)" stroke="rgba(247,241,232,0.07)" strokeWidth="1"/>
 
                     {/* Progress ring */}
-                    <circle cx="60" cy="121" r="32" stroke="rgba(247,241,232,0.07)" strokeWidth="5.5" fill="none"/>
-                    <circle cx="60" cy="121" r="32" stroke="url(#ring)" strokeWidth="5.5" strokeDasharray="134 67" strokeDashoffset="33" strokeLinecap="round" fill="none"/>
-                    <text x="60" y="118" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="15" fontWeight="700" fill="#F7F1E8" textAnchor="middle">14</text>
-                    <text x="60" y="132" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="500" fill="#F7F1E8" fillOpacity="0.35" textAnchor="middle">z 21 dni</text>
+                    <circle cx="58" cy="123" r="30" stroke="rgba(247,241,232,0.07)" strokeWidth="5" fill="none"/>
+                    <circle cx="58" cy="123" r="30" stroke="url(#ring)" strokeWidth="5" strokeDasharray="126 62" strokeDashoffset="31" strokeLinecap="round" fill="none"/>
+                    <text x="58" y="120" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="14" fontWeight="700" fill="#F7F1E8" textAnchor="middle">14</text>
+                    <text x="58" y="133" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="500" fill="#F7F1E8" fillOpacity="0.35" textAnchor="middle">z 21 dni</text>
 
                     {/* Card text */}
-                    <text x="106" y="88" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fontWeight="700" fill="#9C7B59" letterSpacing="0.14em">DZIEN PROGRAMU</text>
-                    <text x="106" y="109" fontFamily="'Playfair Display',Georgia,serif" fontSize="15" fontWeight="700" fill="#F7F1E8">Aktywny tydzien</text>
-                    <text x="106" y="126" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fill="#F7F1E8" fillOpacity="0.36">Seria: 7 dni z rzedu</text>
-                    <rect x="106" y="134" width="62" height="18" rx="9" fill="rgba(156,123,89,0.18)" stroke="rgba(156,123,89,0.28)" strokeWidth="1"/>
-                    <text x="137" y="146" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fontWeight="600" fill="#9C7B59" textAnchor="middle">Kontynuuj streak</text>
+                    <text x="103" y="88" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="700" fill="#9C7B59" letterSpacing="0.13em">DZIEN PROGRAMU</text>
+                    <text x="103" y="105" fontFamily="'Playfair Display',Georgia,serif" fontSize="12" fontWeight="700" fill="#F7F1E8">Aktywny tydzien</text>
+                    <text x="103" y="119" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.36">Seria: 7 dni z rzedu</text>
+                    <rect x="103" y="128" width="64" height="16" rx="8" fill="rgba(156,123,89,0.18)" stroke="rgba(156,123,89,0.28)" strokeWidth="1"/>
+                    <text x="135" y="139" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="600" fill="#9C7B59" textAnchor="middle">Kontynuuj streak</text>
 
                     {/* Section label */}
-                    <text x="18" y="191" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="700" fill="#9C7B59" fillOpacity="0.75" letterSpacing="0.16em">DZISIAJ</text>
-                    <rect x="18" y="195" width="30" height="2" rx="1" fill="#9C7B59" fillOpacity="0.45"/>
+                    <text x="18" y="196" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="700" fill="#9C7B59" fillOpacity="0.75" letterSpacing="0.16em">DZISIAJ</text>
+                    <rect x="18" y="200" width="30" height="2" rx="1" fill="#9C7B59" fillOpacity="0.45"/>
 
                     {/* Task 1 — done */}
-                    <rect x="12" y="203" width="196" height="48" rx="15" fill="rgba(247,241,232,0.04)" stroke="rgba(74,222,128,0.12)" strokeWidth="1"/>
-                    <circle cx="36" cy="227" r="14" fill="rgba(74,222,128,0.1)"/>
-                    <path d="M30 227 L34.5 232 L43 221" stroke="#4ADE80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <text x="58" y="222" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9.5" fontWeight="600" fill="#F7F1E8">Stretching</text>
-                    <text x="58" y="236" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fill="#F7F1E8" fillOpacity="0.3">15 min · Ukonczone</text>
-                    <rect x="163" y="220" width="36" height="16" rx="8" fill="rgba(74,222,128,0.12)"/>
-                    <text x="181" y="231" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="600" fill="#4ADE80" textAnchor="middle">Gotowe</text>
+                    <rect x="12" y="208" width="196" height="44" rx="14" fill="rgba(247,241,232,0.04)" stroke="rgba(74,222,128,0.12)" strokeWidth="1"/>
+                    <circle cx="35" cy="230" r="13" fill="rgba(74,222,128,0.1)"/>
+                    <path d="M29.5 230 L33.5 234.5 L41.5 224" stroke="#4ADE80" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <text x="56" y="225" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9" fontWeight="600" fill="#F7F1E8">Stretching</text>
+                    <text x="56" y="238" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.3">15 min · Ukonczone</text>
+                    <rect x="162" y="222" width="38" height="16" rx="8" fill="rgba(74,222,128,0.12)"/>
+                    <text x="181" y="233" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fontWeight="600" fill="#4ADE80" textAnchor="middle">Gotowe</text>
 
                     {/* Task 2 */}
-                    <rect x="12" y="257" width="196" height="48" rx="15" fill="rgba(247,241,232,0.04)" stroke="rgba(247,241,232,0.06)" strokeWidth="1"/>
-                    <circle cx="36" cy="281" r="14" fill="rgba(156,123,89,0.12)" stroke="rgba(156,123,89,0.22)" strokeWidth="1"/>
-                    <path d="M30 276 L30 286 L41 281 Z" fill="#9C7B59" fillOpacity="0.75"/>
-                    <text x="58" y="276" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9.5" fontWeight="600" fill="#F7F1E8">PowerBody</text>
-                    <text x="58" y="290" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fill="#F7F1E8" fillOpacity="0.3">15 min · Do zrobienia</text>
-                    <rect x="163" y="274" width="36" height="16" rx="8" fill="rgba(156,123,89,0.22)"/>
-                    <text x="181" y="285" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="600" fill="#9C7B59" textAnchor="middle">Zacznij</text>
+                    <rect x="12" y="258" width="196" height="44" rx="14" fill="rgba(247,241,232,0.04)" stroke="rgba(247,241,232,0.06)" strokeWidth="1"/>
+                    <circle cx="35" cy="280" r="13" fill="rgba(156,123,89,0.12)" stroke="rgba(156,123,89,0.22)" strokeWidth="1"/>
+                    <path d="M30 275.5 L30 284.5 L40 280 Z" fill="#9C7B59" fillOpacity="0.75"/>
+                    <text x="56" y="275" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9" fontWeight="600" fill="#F7F1E8">PowerBody</text>
+                    <text x="56" y="288" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.3">15 min · Do zrobienia</text>
+                    <rect x="162" y="272" width="38" height="16" rx="8" fill="rgba(156,123,89,0.22)"/>
+                    <text x="181" y="283" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fontWeight="600" fill="#9C7B59" textAnchor="middle">Zacznij</text>
 
                     {/* Task 3 */}
-                    <rect x="12" y="311" width="196" height="48" rx="15" fill="rgba(247,241,232,0.04)" stroke="rgba(247,241,232,0.06)" strokeWidth="1"/>
-                    <circle cx="36" cy="335" r="14" fill="rgba(156,123,89,0.08)" stroke="rgba(156,123,89,0.18)" strokeWidth="1"/>
-                    <rect x="29" y="328" width="14" height="14" rx="3.5" stroke="#9C7B59" strokeOpacity="0.45" strokeWidth="1.3" fill="none"/>
-                    <rect x="32" y="332" width="8" height="1.8" rx="0.9" fill="#9C7B59" fillOpacity="0.4"/>
-                    <rect x="32" y="335.5" width="6" height="1.8" rx="0.9" fill="#9C7B59" fillOpacity="0.4"/>
-                    <rect x="32" y="339" width="7" height="1.8" rx="0.9" fill="#9C7B59" fillOpacity="0.4"/>
-                    <text x="58" y="330" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9.5" fontWeight="600" fill="#F7F1E8">Plan zywienia</text>
-                    <text x="58" y="344" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fill="#F7F1E8" fillOpacity="0.3">Suplementacja · Planowane</text>
+                    <rect x="12" y="308" width="196" height="44" rx="14" fill="rgba(247,241,232,0.04)" stroke="rgba(247,241,232,0.06)" strokeWidth="1"/>
+                    <circle cx="35" cy="330" r="13" fill="rgba(156,123,89,0.08)" stroke="rgba(156,123,89,0.18)" strokeWidth="1"/>
+                    <rect x="28.5" y="323.5" width="13" height="13" rx="3" stroke="#9C7B59" strokeOpacity="0.45" strokeWidth="1.2" fill="none"/>
+                    <rect x="31" y="327" width="8" height="1.8" rx="0.9" fill="#9C7B59" fillOpacity="0.4"/>
+                    <rect x="31" y="330.5" width="6" height="1.8" rx="0.9" fill="#9C7B59" fillOpacity="0.4"/>
+                    <rect x="31" y="334" width="7" height="1.8" rx="0.9" fill="#9C7B59" fillOpacity="0.4"/>
+                    <text x="56" y="325" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9" fontWeight="600" fill="#F7F1E8">Plan zywienia</text>
+                    <text x="56" y="338" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.3">Suplementacja · Planowane</text>
 
                     {/* Task 4 */}
-                    <rect x="12" y="365" width="196" height="48" rx="15" fill="rgba(247,241,232,0.04)" stroke="rgba(247,241,232,0.06)" strokeWidth="1"/>
-                    <circle cx="36" cy="389" r="14" fill="rgba(156,123,89,0.08)" stroke="rgba(156,123,89,0.18)" strokeWidth="1"/>
-                    <path d="M36 377 C30 377 27.5 381.5 27.5 385.5 C27.5 390 31 393 35 394 L35 396 L37 396 L37 394 C41 393 44.5 390 44.5 385.5 C44.5 381.5 42 377 36 377Z" stroke="#9C7B59" strokeOpacity="0.42" strokeWidth="1.3" fill="none"/>
-                    <circle cx="36" cy="385" r="2.5" fill="#9C7B59" fillOpacity="0.38"/>
-                    <text x="58" y="384" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9.5" fontWeight="600" fill="#F7F1E8">Mentalne</text>
-                    <text x="58" y="398" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fill="#F7F1E8" fillOpacity="0.3">Prowadzenie tematyczne</text>
+                    <rect x="12" y="358" width="196" height="44" rx="14" fill="rgba(247,241,232,0.04)" stroke="rgba(247,241,232,0.06)" strokeWidth="1"/>
+                    <circle cx="35" cy="380" r="13" fill="rgba(156,123,89,0.08)" stroke="rgba(156,123,89,0.18)" strokeWidth="1"/>
+                    <path d="M35 369 C29.5 369 27 373 27 377 C27 381.5 30 384 33.5 385 L33.5 387 L36.5 387 L36.5 385 C40 384 43 381.5 43 377 C43 373 40.5 369 35 369Z" stroke="#9C7B59" strokeOpacity="0.42" strokeWidth="1.2" fill="none"/>
+                    <circle cx="35" cy="376.5" r="2.2" fill="#9C7B59" fillOpacity="0.38"/>
+                    <text x="56" y="375" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="9" fontWeight="600" fill="#F7F1E8">Mentalne</text>
+                    <text x="56" y="388" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.3">Prowadzenie tematyczne</text>
 
                     {/* Bottom nav */}
-                    <rect x="12" y="420" width="196" height="44" rx="16" fill="rgba(247,241,232,0.055)" stroke="rgba(247,241,232,0.08)" strokeWidth="1"/>
-                    <rect x="20" y="426" width="42" height="32" rx="12" fill="rgba(156,123,89,0.2)"/>
-                    <path d="M36 453 L36 446 L41 441 L46 446 L46 453" stroke="#9C7B59" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="rgba(156,123,89,0.18)"/>
-                    <rect x="39" y="447" width="4" height="6" rx="1.5" fill="#9C7B59" fillOpacity="0.55"/>
-                    <circle cx="97" cy="442" r="7" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" fill="none"/>
-                    <path d="M97 438 L97 446 M93 442 L101 442" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" strokeLinecap="round"/>
-                    <rect x="132" y="438" width="15" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
-                    <rect x="132" y="444" width="11" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
-                    <rect x="132" y="450" width="13" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
-                    <circle cx="185" cy="442" r="7" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" fill="none"/>
-                    <circle cx="185" cy="440" r="2.5" fill="#F7F1E8" fillOpacity="0.18"/>
+                    <rect x="12" y="414" width="196" height="46" rx="16" fill="rgba(247,241,232,0.055)" stroke="rgba(247,241,232,0.08)" strokeWidth="1"/>
+                    <rect x="20" y="420" width="40" height="34" rx="12" fill="rgba(156,123,89,0.2)"/>
+                    <path d="M35 449 L35 443 L40 438 L45 443 L45 449" stroke="#9C7B59" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="rgba(156,123,89,0.18)"/>
+                    <rect x="38" y="444" width="4" height="5" rx="1.5" fill="#9C7B59" fillOpacity="0.55"/>
+                    <circle cx="96" cy="437" r="7" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" fill="none"/>
+                    <path d="M96 433 L96 441 M92 437 L100 437" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" strokeLinecap="round"/>
+                    <rect x="130" y="433" width="15" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
+                    <rect x="130" y="439" width="11" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
+                    <rect x="130" y="445" width="13" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
+                    <circle cx="184" cy="437" r="7" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" fill="none"/>
+                    <circle cx="184" cy="435" r="2.5" fill="#F7F1E8" fillOpacity="0.18"/>
 
                     {/* Home indicator */}
                     <rect x="84" y="470" width="52" height="4" rx="2" fill="#F7F1E8" fillOpacity="0.1"/>
