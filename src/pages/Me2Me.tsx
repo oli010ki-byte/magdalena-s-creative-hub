@@ -185,54 +185,91 @@ const Me2Me = () => {
                   style={{ backgroundColor: C.cream }}
                 >
                   <svg viewBox="0 0 200 430" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                    {/* Screen background */}
+                    {/* Background */}
                     <rect width="200" height="430" fill={C.cream}/>
+
+                    {/* Status bar */}
+                    <text x="16" y="21" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="600" fill={C.espresso} fillOpacity="0.38">9:41</text>
+                    <rect x="150" y="13" width="21" height="8" rx="2.5" stroke={C.espresso} strokeOpacity="0.18" strokeWidth="1" fill="none"/>
+                    <rect x="152" y="15" width="13" height="4" rx="1.5" fill={C.espresso} fillOpacity="0.18"/>
+                    <rect x="171" y="15" width="2" height="4" rx="1" fill={C.espresso} fillOpacity="0.18"/>
+                    <rect x="177" y="14" width="8" height="6" rx="2" stroke={C.espresso} strokeOpacity="0.18" strokeWidth="0.8" fill="none"/>
+                    <rect x="178" y="15.5" width="5" height="3" rx="1" fill={C.espresso} fillOpacity="0.18"/>
+                    <rect x="185" y="14" width="1.5" height="6" rx="0.75" fill={C.espresso} fillOpacity="0.18"/>
+
                     {/* Pill notch */}
-                    <rect x="70" y="12" width="60" height="8" rx="4" fill={C.parchment}/>
-                    {/* App header */}
-                    <rect x="20" y="40" width="72" height="7" rx="3.5" fill={C.espresso} opacity="0.75"/>
-                    <rect x="20" y="55" width="46" height="5" rx="2.5" fill={C.gold} opacity="0.65"/>
-                    {/* Progress ring placeholder */}
-                    <circle cx="162" cy="50" r="20" stroke={C.parchment} strokeWidth="3.5" fill="none"/>
-                    <circle cx="162" cy="50" r="20" stroke={C.gold} strokeWidth="3.5" strokeDasharray="80 46" strokeDashoffset="20" strokeLinecap="round" fill="none"/>
-                    <rect x="154" y="45" width="16" height="9" rx="4.5" fill={C.espresso} opacity="0.45"/>
-                    {/* Day progress track */}
-                    <rect x="20" y="86" width="160" height="6" rx="3" fill={C.parchment}/>
-                    <rect x="20" y="86" width="112" height="6" rx="3" fill={C.gold} opacity="0.5"/>
-                    <rect x="20" y="99" width="38" height="4" rx="2" fill={C.espresso} opacity="0.18"/>
-                    <rect x="152" y="99" width="28" height="4" rx="2" fill={C.espresso} opacity="0.18"/>
-                    {/* Card 1 */}
-                    <rect x="16" y="116" width="168" height="66" rx="14" fill={C.ivory}/>
-                    <rect x="30" y="130" width="56" height="5" rx="2.5" fill={C.espresso} opacity="0.6"/>
-                    <rect x="30" y="142" width="96" height="5" rx="2.5" fill={C.espresso} opacity="0.24"/>
-                    <rect x="30" y="153" width="72" height="5" rx="2.5" fill={C.espresso} opacity="0.17"/>
-                    <circle cx="160" cy="143" r="13" fill={`${C.gold}22`}/>
-                    <rect x="154" y="138" width="12" height="10" rx="5" fill={C.gold} opacity="0.5"/>
-                    {/* List item 1 */}
-                    <rect x="16" y="194" width="168" height="48" rx="12" fill={C.ivory}/>
-                    <circle cx="38" cy="218" r="11" fill={`${C.gold}22`}/>
-                    <rect x="58" y="212" width="78" height="5" rx="2.5" fill={C.espresso} opacity="0.55"/>
-                    <rect x="58" y="223" width="54" height="4" rx="2" fill={C.espresso} opacity="0.22"/>
-                    <rect x="155" y="213" width="20" height="10" rx="5" fill={`${C.gold}30`}/>
-                    {/* List item 2 */}
-                    <rect x="16" y="248" width="168" height="48" rx="12" fill={C.ivory}/>
-                    <circle cx="38" cy="272" r="11" fill={`${C.gold}22`}/>
-                    <rect x="58" y="266" width="66" height="5" rx="2.5" fill={C.espresso} opacity="0.55"/>
-                    <rect x="58" y="277" width="44" height="4" rx="2" fill={C.espresso} opacity="0.22"/>
-                    <rect x="155" y="267" width="20" height="10" rx="5" fill={`${C.gold}30`}/>
-                    {/* List item 3 */}
-                    <rect x="16" y="302" width="168" height="48" rx="12" fill={C.ivory}/>
-                    <circle cx="38" cy="326" r="11" fill={`${C.gold}22`}/>
-                    <rect x="58" y="320" width="82" height="5" rx="2.5" fill={C.espresso} opacity="0.55"/>
-                    <rect x="58" y="331" width="58" height="4" rx="2" fill={C.espresso} opacity="0.22"/>
-                    <rect x="155" y="321" width="20" height="10" rx="5" fill={`${C.gold}30`}/>
-                    {/* Bottom nav bar */}
-                    <rect x="16" y="362" width="168" height="42" rx="14" fill={C.parchment}/>
-                    <circle cx="54" cy="383" r="8" fill={C.gold} opacity="0.3"/>
-                    <rect x="95" y="377" width="10" height="12" rx="3" fill={C.espresso} opacity="0.2"/>
-                    <circle cx="146" cy="383" r="8" fill={C.espresso} opacity="0.08"/>
+                    <rect x="68" y="7" width="64" height="9" rx="4.5" fill={C.parchment}/>
+
+                    {/* Header */}
+                    <text x="16" y="51" fontFamily="'Playfair Display',serif" fontSize="18" fontWeight="700" fill={C.espresso} letterSpacing="-0.5">Me2Me</text>
+                    <circle cx="178" cy="44" r="13" fill={`${C.gold}22`}/>
+                    <text x="172" y="48" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="700" fill={C.gold}>MZ</text>
+
+                    {/* Progress hero card */}
+                    <rect x="12" y="61" width="176" height="90" rx="16" fill={C.parchment}/>
+                    <circle cx="52" cy="106" r="25" stroke={`${C.espresso}12`} strokeWidth="4.5" fill="none"/>
+                    <circle cx="52" cy="106" r="25" stroke={C.gold} strokeWidth="4.5" strokeDasharray="105 52" strokeDashoffset="26" strokeLinecap="round" fill="none"/>
+                    <text x="52" y="103" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="13" fontWeight="700" fill={C.espresso} textAnchor="middle">14</text>
+                    <text x="52" y="116" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="5.5" fontWeight="500" fill={C.espresso} fillOpacity="0.42" textAnchor="middle">z 21 dni</text>
+                    <text x="90" y="80" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="700" fill={C.gold} letterSpacing="0.12em">DZIEN PROGRAMU</text>
+                    <text x="90" y="97" fontFamily="'Playfair Display',serif" fontSize="13" fontWeight="700" fill={C.espresso}>Aktywny tydzien</text>
+                    <text x="90" y="111" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill={C.espresso} fillOpacity="0.42">Seria: 7 dni z rzedu</text>
+                    <rect x="90" y="118" width="56" height="14" rx="7" fill={`${C.gold}1C`}/>
+                    <text x="118" y="128" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="600" fill={C.gold} textAnchor="middle">Kontynuuj streak</text>
+
+                    {/* Section label */}
+                    <text x="16" y="167" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="700" fill={C.espresso} fillOpacity="0.6" letterSpacing="0.1em">DZISIAJ</text>
+                    <rect x="16" y="172" width="26" height="2" rx="1" fill={C.gold} fillOpacity="0.55"/>
+
+                    {/* Task 1 — done */}
+                    <rect x="12" y="179" width="176" height="42" rx="12" fill={C.ivory}/>
+                    <circle cx="33" cy="200" r="12" fill={`${C.gold}22`}/>
+                    <path d="M27.5 200 L31.5 204 L39.5 194" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <text x="52" y="195" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8.5" fontWeight="600" fill={C.espresso}>Stretching</text>
+                    <text x="52" y="208" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill={C.espresso} fillOpacity="0.38">15 min · Ukonczone</text>
+                    <rect x="151" y="193" width="26" height="14" rx="7" fill="#22C55E1A"/>
+                    <text x="164" y="203" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8" fontWeight="700" fill="#22C55E" textAnchor="middle">✓</text>
+
+                    {/* Task 2 */}
+                    <rect x="12" y="226" width="176" height="42" rx="12" fill={C.ivory}/>
+                    <circle cx="33" cy="247" r="12" stroke={`${C.gold}45`} strokeWidth="1.5" fill={`${C.gold}0D`}/>
+                    <path d="M30 243 L30 251 M27 247 L36 243 L36 251 Z" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    <text x="52" y="242" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8.5" fontWeight="600" fill={C.espresso}>PowerBody</text>
+                    <text x="52" y="255" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill={C.espresso} fillOpacity="0.38">15 min · Do zrobienia</text>
+                    <rect x="147" y="240" width="32" height="14" rx="7" fill={`${C.gold}20`}/>
+                    <text x="163" y="250" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fontWeight="600" fill={C.gold} textAnchor="middle">Zacznij</text>
+
+                    {/* Task 3 */}
+                    <rect x="12" y="273" width="176" height="42" rx="12" fill={C.ivory}/>
+                    <circle cx="33" cy="294" r="12" stroke={`${C.gold}45`} strokeWidth="1.5" fill={`${C.gold}0D`}/>
+                    <rect x="26" y="289" width="14" height="10" rx="2.5" stroke={C.espresso} strokeOpacity="0.28" strokeWidth="1.2" fill="none"/>
+                    <rect x="28" y="292" width="10" height="1.5" rx="0.75" fill={C.espresso} fillOpacity="0.28"/>
+                    <rect x="28" y="295" width="7" height="1.5" rx="0.75" fill={C.espresso} fillOpacity="0.28"/>
+                    <text x="52" y="289" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8.5" fontWeight="600" fill={C.espresso}>Plan zywienia</text>
+                    <text x="52" y="302" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill={C.espresso} fillOpacity="0.38">Suplementacja · Do zrobienia</text>
+
+                    {/* Task 4 */}
+                    <rect x="12" y="320" width="176" height="42" rx="12" fill={C.ivory}/>
+                    <circle cx="33" cy="341" r="12" stroke={`${C.gold}45`} strokeWidth="1.5" fill={`${C.gold}0D`}/>
+                    <path d="M33 331 C27 331 25 336 25 340 C25 345 29 348 33 348 C37 348 41 345 41 340 C41 336 39 331 33 331 Z" stroke={C.espresso} strokeOpacity="0.25" strokeWidth="1.2" fill="none"/>
+                    <circle cx="33" cy="338" r="2.5" fill={C.espresso} fillOpacity="0.25"/>
+                    <text x="52" y="336" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8.5" fontWeight="600" fill={C.espresso}>Mentalne</text>
+                    <text x="52" y="349" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill={C.espresso} fillOpacity="0.38">Prowadzenie tematyczne</text>
+
+                    {/* Bottom nav */}
+                    <rect x="12" y="369" width="176" height="46" rx="14" fill={C.parchment}/>
+                    <rect x="20" y="374" width="36" height="36" rx="10" fill={`${C.gold}20`}/>
+                    <path d="M33 399 L33 392 L38 387 L43 392 L43 399 Z" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill={`${C.gold}28`}/>
+                    <rect x="35" y="393" width="6" height="6" rx="1.5" fill={C.gold} fillOpacity="0.5"/>
+                    <path d="M82 387 L82 405 M78 393 L86 393" stroke={C.espresso} strokeOpacity="0.18" strokeWidth="1.5" strokeLinecap="round"/>
+                    <circle cx="120" cy="392" r="7" stroke={C.espresso} strokeOpacity="0.18" strokeWidth="1.5" fill="none"/>
+                    <path d="M120 388 L120 396 M116 392 L124 392" stroke={C.espresso} strokeOpacity="0.18" strokeWidth="1.5" strokeLinecap="round"/>
+                    <rect x="151" y="385" width="14" height="3.5" rx="1.75" fill={C.espresso} fillOpacity="0.15"/>
+                    <rect x="151" y="391" width="10" height="3.5" rx="1.75" fill={C.espresso} fillOpacity="0.15"/>
+                    <rect x="151" y="397" width="12" height="3.5" rx="1.75" fill={C.espresso} fillOpacity="0.15"/>
+
                     {/* Home indicator */}
-                    <rect x="74" y="418" width="52" height="4" rx="2" fill={C.espresso} opacity="0.14"/>
+                    <rect x="74" y="420" width="52" height="4" rx="2" fill={C.espresso} fillOpacity="0.12"/>
                   </svg>
                 </div>
               </div>
