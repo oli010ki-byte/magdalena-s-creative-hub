@@ -2,8 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Smartphone, Heart, Target, Zap, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
-import me2me2 from "@/assets/me2me/me2me-2.png";
-import me2me1 from "@/assets/me2me/me2me-1.png";
+import me2meMobile from "@/assets/me2me/me2me-mobile.png";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
@@ -186,175 +185,12 @@ const Me2Me = () => {
                   className="aspect-[9/19.5] rounded-[calc(3.2rem-8px)] overflow-hidden flex flex-col relative"
                   style={{ backgroundColor: "#1A1108", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
-                  {/* Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 rounded-b-lg"
-                    style={{ width: 68, height: 10, backgroundColor: "#0E0B05" }} />
-
-                  {/* Status bar */}
-                  <div className="flex-shrink-0 flex justify-between items-center px-4 pt-3 pb-1">
-                    <span style={{ fontSize: 8, fontWeight: 600, color: "rgba(247,241,232,0.5)" }}>9:41</span>
-                    <div className="flex items-center gap-1.5">
-                      <div className="flex items-end gap-[2px]">
-                        {[4, 6, 8].map((h, i) => (
-                          <div key={i} style={{ width: 3, height: h, borderRadius: 1, backgroundColor: "rgba(247,241,232,0.38)" }} />
-                        ))}
-                      </div>
-                      <div className="relative" style={{ width: 22, height: 11 }}>
-                        <div className="absolute inset-0 rounded" style={{ border: "1px solid rgba(247,241,232,0.28)" }} />
-                        <div className="absolute" style={{ top: 2, left: 2, right: 5, bottom: 2, borderRadius: 1, backgroundColor: "rgba(156,123,89,0.7)" }} />
-                        <div className="absolute" style={{ top: 3, right: -3, width: 2.5, height: 5, borderRadius: 1, backgroundColor: "rgba(247,241,232,0.28)" }} />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Header */}
-                  <div className="flex-shrink-0 flex justify-between items-center px-4 pb-2">
-                    <span style={{ fontFamily: "'Playfair Display',serif", fontSize: 20, fontWeight: 700, color: "#F7F1E8", letterSpacing: "-0.5px" }}>
-                      Me2Me
-                    </span>
-                    <div className="rounded-full flex items-center justify-center"
-                      style={{ width: 32, height: 32, backgroundColor: "rgba(156,123,89,0.18)", border: "1px solid rgba(156,123,89,0.3)" }}>
-                      <span style={{ fontSize: 8, fontWeight: 700, color: "#9C7B59" }}>MZ</span>
-                    </div>
-                  </div>
-
-                  {/* Progress card */}
-                  <div className="flex-shrink-0 mx-3 rounded-2xl p-3 flex items-center gap-3"
-                    style={{ backgroundColor: "rgba(247,241,232,0.05)", border: "1px solid rgba(247,241,232,0.07)" }}>
-                    <svg width="60" height="60" viewBox="0 0 60 60" style={{ flexShrink: 0 }}>
-                      <circle cx="30" cy="30" r="24" stroke="rgba(247,241,232,0.08)" strokeWidth="4.5" fill="none"/>
-                      <circle cx="30" cy="30" r="24" stroke="#9C7B59" strokeWidth="4.5"
-                        strokeDasharray="101 50" strokeDashoffset="-25" strokeLinecap="round" fill="none"/>
-                      <text x="30" y="27" textAnchor="middle" fontSize="14" fontWeight="700" fill="#F7F1E8"
-                        fontFamily="'Plus Jakarta Sans',sans-serif">14</text>
-                      <text x="30" y="38" textAnchor="middle" fontSize="5.5" fill="rgba(247,241,232,0.38)"
-                        fontFamily="'Plus Jakarta Sans',sans-serif">z 21 dni</text>
-                    </svg>
-                    <div>
-                      <div style={{ fontSize: 6, fontWeight: 700, color: "#9C7B59", letterSpacing: "0.13em", marginBottom: 3 }}>DZIEN PROGRAMU</div>
-                      <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 13, fontWeight: 700, color: "#F7F1E8", lineHeight: 1.2, marginBottom: 3 }}>Tydzien 2 · War. A</div>
-                      <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.36)", marginBottom: 5 }}>Seria: 7 dni z rzedu</div>
-                      <div className="inline-flex items-center px-2 py-1 rounded-full"
-                        style={{ backgroundColor: "rgba(156,123,89,0.18)", border: "1px solid rgba(156,123,89,0.28)" }}>
-                        <span style={{ fontSize: 6, fontWeight: 600, color: "#9C7B59" }}>Kontynuuj streak</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Section label */}
-                  <div className="flex-shrink-0 flex items-center gap-2 px-4 pt-3 pb-2">
-                    <span style={{ fontSize: 7, fontWeight: 700, color: "rgba(156,123,89,0.75)", letterSpacing: "0.16em", whiteSpace: "nowrap" }}>TWOJ PROGRAM</span>
-                    <div className="flex-1" style={{ height: 1, backgroundColor: "rgba(156,123,89,0.2)" }} />
-                  </div>
-
-                  {/* Module list */}
-                  <div className="flex-1 overflow-hidden px-3 flex flex-col gap-1.5">
-
-                    {/* WSTEP — ukonczone */}
-                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
-                      style={{ backgroundColor: "rgba(74,222,128,0.04)", border: "1px solid rgba(74,222,128,0.08)" }}>
-                      <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ width: 42, height: 42 }}>
-                        <img src={me2me2} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "13% 35%" }} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div style={{ fontSize: 8, fontWeight: 600, color: "rgba(247,241,232,0.55)", marginBottom: 2 }}>Wstep do programu</div>
-                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.25)" }}>O mnie · Nawyki · Suplementy</div>
-                      </div>
-                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
-                        style={{ width: 38, height: 16, backgroundColor: "rgba(74,222,128,0.1)" }}>
-                        <span style={{ fontSize: 6, fontWeight: 600, color: "#4ADE80" }}>Gotowe</span>
-                      </div>
-                    </div>
-
-                    {/* DZIEN 14 — aktywny */}
-                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
-                      style={{ backgroundColor: "rgba(156,123,89,0.1)", border: "1px solid rgba(156,123,89,0.4)" }}>
-                      <div className="rounded-xl overflow-hidden flex-shrink-0 relative" style={{ width: 42, height: 42 }}>
-                        <img src={me2me2} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "36% 35%" }} />
-                        <div className="absolute inset-0 flex items-center justify-center"
-                          style={{ backgroundColor: "rgba(28,22,16,0.38)" }}>
-                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <circle cx="9" cy="9" r="9" fill="rgba(156,123,89,0.85)"/>
-                            <path d="M7 6 L7 12 L13 9 Z" fill="#F7F1E8"/>
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="inline-flex mb-1 rounded-full px-1.5 py-0.5"
-                          style={{ backgroundColor: "rgba(156,123,89,0.25)" }}>
-                          <span style={{ fontSize: 5.5, fontWeight: 700, color: "#9C7B59", letterSpacing: "0.1em" }}>DZISIAJ</span>
-                        </div>
-                        <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 9.5, fontWeight: 700, color: "#F7F1E8", marginBottom: 1 }}>Dzien 14</div>
-                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.42)" }}>Tydzien 2 · Wariant A</div>
-                      </div>
-                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
-                        style={{ width: 38, height: 16, backgroundColor: "rgba(156,123,89,0.32)" }}>
-                        <span style={{ fontSize: 6.5, fontWeight: 700, color: "#9C7B59" }}>Zacznij</span>
-                      </div>
-                    </div>
-
-                    {/* DZIEN 15 — jutro */}
-                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
-                      style={{ backgroundColor: "rgba(247,241,232,0.03)", border: "1px solid rgba(247,241,232,0.05)" }}>
-                      <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ width: 42, height: 42, opacity: 0.45 }}>
-                        <img src={me2me2} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "57% 35%" }} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div style={{ fontSize: 8, fontWeight: 600, color: "rgba(247,241,232,0.3)", marginBottom: 2 }}>Dzien 15</div>
-                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.18)" }}>Ksztaltowanie nawykow</div>
-                      </div>
-                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
-                        style={{ width: 38, height: 16, backgroundColor: "rgba(247,241,232,0.05)" }}>
-                        <span style={{ fontSize: 6, fontWeight: 600, color: "rgba(247,241,232,0.28)" }}>Jutro</span>
-                      </div>
-                    </div>
-
-                    {/* TYDZIEN 3 — zablokowany */}
-                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
-                      style={{ backgroundColor: "rgba(247,241,232,0.02)", border: "1px solid rgba(247,241,232,0.04)" }}>
-                      <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ width: 42, height: 42, opacity: 0.25 }}>
-                        <img src={me2me1} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "40% 75%" }} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 9, fontWeight: 700, color: "rgba(247,241,232,0.2)", marginBottom: 2 }}>Tydzien 3</div>
-                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.14)" }}>Stabilnosc i trwale efekty</div>
-                      </div>
-                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
-                        style={{ width: 44, height: 16, backgroundColor: "rgba(247,241,232,0.04)" }}>
-                        <span style={{ fontSize: 6, fontWeight: 600, color: "rgba(247,241,232,0.2)" }}>Odblokuj</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom nav */}
-                  <div className="flex-shrink-0 mx-3 my-2 rounded-2xl flex items-center justify-around"
-                    style={{ height: 46, backgroundColor: "rgba(247,241,232,0.055)", border: "1px solid rgba(247,241,232,0.08)" }}>
-                    <div className="rounded-xl flex items-center justify-center"
-                      style={{ width: 40, height: 34, backgroundColor: "rgba(156,123,89,0.2)" }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M2 7 L8 2 L14 7 L14 14 L10 14 L10 10 L6 10 L6 14 L2 14 Z"
-                          stroke="#9C7B59" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="rgba(156,123,89,0.2)"/>
-                      </svg>
-                    </div>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="5.5" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3"/>
-                      <path d="M8 5.5 L8 10.5 M5.5 8 L10.5 8" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3" strokeLinecap="round"/>
-                    </svg>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <rect x="2" y="4" width="12" height="1.5" rx="0.75" fill="rgba(247,241,232,0.18)"/>
-                      <rect x="2" y="7.25" width="9" height="1.5" rx="0.75" fill="rgba(247,241,232,0.18)"/>
-                      <rect x="2" y="10.5" width="11" height="1.5" rx="0.75" fill="rgba(247,241,232,0.18)"/>
-                    </svg>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="5.5" r="2.8" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3"/>
-                      <path d="M2 14 C2 11 4.5 9.5 8 9.5 C11.5 9.5 14 11 14 14" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-
-                  {/* Home indicator */}
-                  <div className="flex-shrink-0 flex justify-center mb-2">
-                    <div className="rounded-full" style={{ width: 52, height: 4, backgroundColor: "rgba(247,241,232,0.1)" }} />
-                  </div>
+                  <img
+                    src={me2meMobile}
+                    alt="Me2Me app"
+                    className="w-full h-full"
+                    style={{ objectFit: "cover", objectPosition: "top center" }}
+                  />
                 </div>
               </div>
             </motion.div>
