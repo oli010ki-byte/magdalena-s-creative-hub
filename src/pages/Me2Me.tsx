@@ -1,24 +1,39 @@
-import { motion } from "framer-motion";
-import { Smartphone, Heart, Target, Zap, CheckCircle, Sparkles } from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Smartphone, Heart, Target, Zap, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
+
+const EASE = [0.23, 1, 0.32, 1] as const;
+
+const C = {
+  ivory:    "#F7F1E8",
+  cream:    "#FDFAF5",
+  parchment:"#EDE6DA",
+  espresso: "#1C1610",
+  body:     "rgba(28,22,16,0.62)",
+  gold:     "#9C7B59",
+} as const;
+
+const FadeUp = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 22, filter: "blur(3px)" }}
+      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+      transition={{ duration: 0.72, delay, ease: EASE }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const features = [
-  {
-    icon: Heart,
-    title: "Dziennik emocji",
-    description: "Śledź swoje uczucia i odkrywaj wzorce emocjonalne",
-  },
-  {
-    icon: Target,
-    title: "Cele i nawyki",
-    description: "Wyznaczaj cele i buduj pozytywne nawyki krok po kroku",
-  },
-  {
-    icon: Zap,
-    title: "Codzienne ćwiczenia",
-    description: "Praktyczne zadania wspierające Twój rozwój",
-  },
+  { icon: Heart,  title: "Dziennik emocji",     description: "Śledź swoje uczucia i odkrywaj wzorce emocjonalne" },
+  { icon: Target, title: "Cele i nawyki",        description: "Wyznaczaj cele i buduj pozytywne nawyki krok po kroku" },
+  { icon: Zap,    title: "Codzienne ćwiczenia",  description: "Praktyczne zadania wspierające Twój rozwój każdego dnia" },
 ];
 
 const benefits = [
@@ -30,106 +45,150 @@ const benefits = [
   "Dostęp do ekskluzywnych materiałów",
 ];
 
+const dailyItems = [
+  "Aktywność: Stretching (15 min) + PowerBody (15 min)",
+  "Plan żywienia i suplementacji",
+  "Tematyczne prowadzenie mentalne",
+  "Dla chętnych: oczyszczenie",
+];
+
 const Me2Me = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const heroInView = useInView(heroRef, { once: true });
+
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
-        <div className="absolute top-20 right-10 w-72 h-72 bg-soft-gold/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-56 h-56 bg-accent/10 rounded-full blur-2xl" />
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <motion.span 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 mb-6 bg-card/60 backdrop-blur-sm px-4 py-2 rounded-full border border-border/30"
+      <section style={{ backgroundColor: C.ivory }} className="pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div ref={heroRef} className="grid lg:grid-cols-[1fr_auto] gap-14 lg:gap-20 items-start">
+            <div>
+              <motion.span
+                initial={{ opacity: 0, y: -8 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] px-4 py-1.5 rounded-full mb-8"
+                style={{ backgroundColor: `${C.gold}18`, color: C.gold }}
               >
-                <Sparkles className="w-4 h-4 text-soft-gold" />
                 Autorska aplikacja
               </motion.span>
-              
-              <h1 className="font-serif text-5xl md:text-7xl font-bold text-foreground mb-8 tracking-tight">
-                <span className="relative">
-                  Me2Me
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-soft-gold to-accent/50 rounded-full" />
-                </span>
-              </h1>
-              
-              <div className="space-y-5 mb-10">
-                <p className="text-xl md:text-2xl font-serif text-foreground/90 font-medium leading-relaxed">
-                  21-31 dni holistycznego kształtowania nawyków
-                </p>
-                <p className="text-lg text-foreground/70 italic font-light tracking-wide">
-                  Od Siebie - dla Siebie - z Sobą
-                </p>
-                <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
-                  Aktywne Ciało • Stabilne emocje • Prawdziwe Relacje
-                  <br />
-                  <span className="text-foreground/60">z żywieniem, wiedzą i świadomością</span>
-                </p>
-                
-                <div className="bg-card/80 rounded-2xl p-5 border border-border/30 mt-4">
-                  <p className="text-sm font-medium text-foreground mb-3">
-                    Na każdy dzień masz rozpisane:
-                  </p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
-                      Aktywność: Stretching (15 min) + PowerBody (15 min)
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
-                      Plan żywienia i suplementacji
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
-                      Tematyczne prowadzenie mentalne
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-soft-gold" />
-                      Dla chętnych: oczyszczenie
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild variant="gold" size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
-                  <a href="https://www.me2me.pl/login" target="_blank" rel="noreferrer" className="gap-2">
-                    <Smartphone className="w-5 h-5" />
-                    Otwórz aplikację
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" className="backdrop-blur-sm bg-background/50">
-                  Dowiedz się więcej
-                </Button>
-              </div>
-            </motion.div>
 
+              <div className="overflow-hidden mb-4">
+                <motion.h1
+                  variants={{
+                    hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },
+                    show:   { clipPath: "inset(0 0 -40% 0)", opacity: 1, transition: { duration: 0.95, ease: EASE } },
+                  }}
+                  initial="hidden"
+                  animate={heroInView ? "show" : "hidden"}
+                  className="font-serif font-bold tracking-[-0.02em] leading-[1.05]"
+                  style={{ fontSize: "clamp(3.2rem, 9vw, 7rem)", color: C.espresso }}
+                >
+                  Me2Me
+                </motion.h1>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.65, delay: 0.3, ease: EASE }}
+                className="space-y-3 mb-10"
+              >
+                <p className="font-serif text-xl font-medium" style={{ color: C.espresso }}>
+                  21–31 dni holistycznego kształtowania nawyków
+                </p>
+                <p className="text-base font-light italic tracking-wide" style={{ color: C.body }}>
+                  Od Siebie — dla Siebie — z Sobą
+                </p>
+                <p className="text-sm" style={{ color: C.body }}>
+                  Aktywne Ciało · Stabilne emocje · Prawdziwe Relacje
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.65, delay: 0.42, ease: EASE }}
+                className="rounded-[1.6rem] p-6 mb-10"
+                style={{ backgroundColor: C.parchment, border: `1px solid ${C.espresso}0d` }}
+              >
+                <p className="text-sm font-medium mb-3" style={{ color: C.espresso }}>
+                  Na każdy dzień masz rozpisane:
+                </p>
+                <ul className="space-y-2">
+                  {dailyItems.map(item => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm" style={{ color: C.body }}>
+                      <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: C.gold }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.65, delay: 0.52, ease: EASE }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
+                <a
+                  href="https://www.me2me.pl/login"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold"
+                  style={{
+                    backgroundColor: C.espresso,
+                    color: "#F2E9DC",
+                    transition: `background-color 160ms cubic-bezier(${EASE.join(",")})`,
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#2e261c")}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = C.espresso)}
+                >
+                  <Smartphone className="w-4 h-4" strokeWidth={2} />
+                  Otwórz aplikację
+                </a>
+                <a
+                  href="https://api.whatsapp.com/send?phone=48785669901"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border"
+                  style={{
+                    borderColor: `${C.espresso}22`,
+                    color: C.espresso,
+                    transition: `border-color 160ms ease`,
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = `${C.espresso}44`)}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = `${C.espresso}22`)}
+                >
+                  Zapytaj o dostęp
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Phone mockup */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              initial={{ opacity: 0, x: 20 }}
+              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.75, delay: 0.25, ease: EASE }}
+              className="hidden lg:flex justify-center"
             >
-              <div className="relative mx-auto w-64 md:w-80">
-                <div className="absolute -inset-4 bg-gradient-to-br from-soft-gold/40 to-accent/30 rounded-[3.5rem] blur-2xl animate-pulse" />
-                <div className="relative bg-card rounded-[3rem] p-4 shadow-2xl border border-border/30">
-                  <div className="aspect-[9/19] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-cream to-secondary">
-                    <img
-                      src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400"
-                      alt="Me2Me App"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+              <div
+                className="w-52 rounded-[2.8rem] p-1.5"
+                style={{
+                  backgroundColor: `${C.gold}18`,
+                  border: `1px solid ${C.espresso}0d`,
+                  boxShadow: `0 32px 64px -16px rgba(28,22,16,0.14)`,
+                }}
+              >
+                <div
+                  className="aspect-[9/19] rounded-[calc(2.8rem-6px)] overflow-hidden"
+                  style={{ backgroundColor: C.parchment }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400"
+                    alt="Me2Me App"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -138,96 +197,127 @@ const Me2Me = () => {
       </section>
 
       {/* Features */}
-      <section className="py-24 bg-card/50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
+      <section style={{ backgroundColor: C.cream }} className="py-20 lg:py-28">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <FadeUp className="mb-14">
+            <h2
+              className="font-serif font-bold tracking-[-0.02em]"
+              style={{ fontSize: "clamp(2rem, 4.5vw, 3.2rem)", color: C.espresso }}
+            >
               Funkcje aplikacji
             </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-3 text-base max-w-md" style={{ color: C.body }}>
               Wszystko, czego potrzebujesz do codziennej pracy nad sobą
             </p>
-          </motion.div>
+          </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-background rounded-3xl p-8 border border-border/30 hover:border-soft-gold/50 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-soft-gold/30 to-accent/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-foreground/80" />
+          <div className="grid md:grid-cols-3 gap-6">
+            {features.map((f, i) => (
+              <FadeUp key={f.title} delay={i * 0.1}>
+                <div
+                  className="rounded-[1.6rem] p-8 h-full group"
+                  style={{
+                    backgroundColor: C.ivory,
+                    border: `1px solid ${C.espresso}0d`,
+                    transition: `border-color 240ms ease`,
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = `${C.gold}44`)}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = `${C.espresso}0d`)}
+                >
+                  <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+                    style={{ backgroundColor: `${C.gold}18` }}
+                  >
+                    <f.icon className="w-6 h-6" style={{ color: C.gold }} strokeWidth={1.5} />
+                  </div>
+                  <h3
+                    className="font-serif font-semibold mb-3"
+                    style={{ fontSize: "1.2rem", color: C.espresso }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: C.body }}>{f.description}</p>
                 </div>
-                <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-              </motion.div>
+              </FadeUp>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-10 tracking-tight">
+      {/* Benefits + CTA */}
+      <section style={{ backgroundColor: C.ivory }} className="py-20 lg:py-28">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+            <FadeUp>
+              <h2
+                className="font-serif font-bold tracking-[-0.02em] mb-10"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 3rem)", color: C.espresso }}
+              >
                 Co zyskasz z Me2Me?
               </h2>
-              <div className="grid sm:grid-cols-2 gap-5">
-                {benefits.map((benefit, index) => (
+              <div className="grid sm:grid-cols-2 gap-4">
+                {benefits.map((b, i) => (
                   <motion.div
-                    key={benefit}
+                    key={b}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-card/50 transition-colors"
+                    transition={{ delay: i * 0.06, ease: EASE }}
+                    className="flex items-center gap-3 p-3 rounded-xl"
+                    style={{ transition: "background-color 160ms ease" }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = `${C.gold}0d`)}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
                   >
-                    <div className="w-8 h-8 rounded-full bg-soft-gold/20 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-5 h-5 text-foreground/70" />
+                    <div
+                      className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: `${C.gold}18` }}
+                    >
+                      <CheckCircle className="w-4 h-4" style={{ color: C.gold }} strokeWidth={1.5} />
                     </div>
-                    <span className="text-foreground/80 font-medium">{benefit}</span>
+                    <span className="text-sm font-medium" style={{ color: C.espresso }}>{b}</span>
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </FadeUp>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 bg-gradient-to-br from-soft-gold/20 to-accent/10 rounded-[2.5rem] blur-xl" />
-              <div className="relative bg-card rounded-3xl p-10 border border-border/30 shadow-lg">
-                <h3 className="font-serif text-3xl font-semibold text-foreground mb-5">
-                  Dołącz już dziś
-                </h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-                  Rozpocznij swoją podróż do lepszej wersji siebie. 
-                  Me2Me jest dostępna na iOS i Android.
-                </p>
-                <Button variant="gold" size="lg" className="w-full shadow-lg hover:shadow-xl transition-shadow text-lg py-6">
-                  Rozpocznij za darmo
-                </Button>
+            <FadeUp delay={0.15}>
+              <div
+                className="rounded-[2rem] p-1.5"
+                style={{ backgroundColor: C.parchment, boxShadow: `inset 0 1px 0 rgba(255,255,255,0.6)` }}
+              >
+                <div
+                  className="rounded-[calc(2rem-6px)] p-10"
+                  style={{ backgroundColor: C.cream }}
+                >
+                  <h3
+                    className="font-serif font-semibold mb-4"
+                    style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: C.espresso }}
+                  >
+                    Dołącz już dziś
+                  </h3>
+                  <p className="text-sm leading-relaxed mb-8" style={{ color: C.body }}>
+                    Rozpocznij swoją podróż do lepszej wersji siebie.
+                    Me2Me jest dostępna na iOS i Android.
+                  </p>
+                  <a
+                    href="https://www.me2me.pl/login"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full text-sm font-semibold"
+                    style={{
+                      backgroundColor: C.espresso,
+                      color: "#F2E9DC",
+                      transition: `background-color 160ms cubic-bezier(${EASE.join(",")})`,
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#2e261c")}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = C.espresso)}
+                  >
+                    <Smartphone className="w-4 h-4" strokeWidth={2} />
+                    Otwórz aplikację
+                  </a>
+                </div>
               </div>
-            </motion.div>
+            </FadeUp>
           </div>
         </div>
       </section>

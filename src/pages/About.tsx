@@ -1,155 +1,229 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar, MessageCircle } from "lucide-react";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
 import magdaPhoto from "@/assets/magda-photo.jpg";
+
+const EASE = [0.23, 1, 0.32, 1] as const;
+
+const C = {
+  ivory:    "#F7F1E8",
+  cream:    "#FDFAF5",
+  parchment:"#EDE6DA",
+  espresso: "#1C1610",
+  body:     "rgba(28,22,16,0.62)",
+  gold:     "#9C7B59",
+  goldHov:  "#B08B68",
+} as const;
+
+const FadeUp = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 22, filter: "blur(3px)" }}
+      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+      transition={{ duration: 0.72, delay, ease: EASE }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const About = () => {
-  return <Layout>
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.6
-        }} className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="inline-block text-sm font-medium px-4 py-1.5 rounded-full bg-secondary text-muted-foreground mb-4">
-                Poznaj mnie
-              </span>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+  const heroRef = useRef<HTMLDivElement>(null);
+  const heroInView = useInView(heroRef, { once: true });
+
+  return (
+    <Layout>
+      {/* Hero */}
+      <section style={{ backgroundColor: C.ivory }} className="pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div ref={heroRef} className="mb-14">
+            <motion.span
+              initial={{ opacity: 0, y: -8 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] px-4 py-1.5 rounded-full mb-8"
+              style={{ backgroundColor: `${C.gold}18`, color: C.gold }}
+            >
+              Poznaj mnie
+            </motion.span>
+
+            <div className="overflow-hidden">
+              <motion.h1
+                variants={{
+                  hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },
+                  show:   { clipPath: "inset(0 0 -40% 0)", opacity: 1, transition: { duration: 0.95, ease: EASE } },
+                }}
+                initial="hidden"
+                animate={heroInView ? "show" : "hidden"}
+                className="font-serif font-bold tracking-[-0.02em] leading-[1.05]"
+                style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", color: C.espresso }}
+              >
                 O mnie
-              </h1>
+              </motion.h1>
             </div>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
-              <motion.div initial={{
-              opacity: 0,
-              x: -20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.2
-            }} className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-secondary">
-                  <img src={magdaPhoto} alt="Magdalena Zając" className="w-full h-full object-cover object-top" />
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+            {/* Photo */}
+            <FadeUp delay={0.15}>
+              <div
+                className="rounded-[2rem] p-1.5"
+                style={{ backgroundColor: `${C.gold}14`, boxShadow: `inset 0 1px 0 rgba(255,255,255,0.5)` }}
+              >
+                <div
+                  className="aspect-[4/5] rounded-[calc(2rem-6px)] overflow-hidden"
+                  style={{ backgroundColor: C.parchment }}
+                >
+                  <img
+                    src={magdaPhoto}
+                    alt="Magdalena Zając"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-soft-gold/20 rounded-full blur-2xl" />
-              </motion.div>
+              </div>
+            </FadeUp>
 
-              <motion.div initial={{
-              opacity: 0,
-              x: 20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.3
-            }} className="space-y-6">
-                <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground">
+            {/* Content */}
+            <div className="space-y-7 lg:pt-4">
+              <FadeUp delay={0.2}>
+                <h2
+                  className="font-serif font-semibold leading-tight tracking-[-0.015em]"
+                  style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", color: C.espresso }}
+                >
                   Magdalena Zając
                 </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p className="text-base font-medium mt-1" style={{ color: C.gold }}>
+                  Mentor holistyczny i biznesowy
+                </p>
+              </FadeUp>
+
+              <FadeUp delay={0.28}>
+                <div className="space-y-4 leading-relaxed" style={{ color: C.body }}>
                   <p>
-                    Od dziecka towarzyszyła mi wysoka energia, miłość do pasji, sportu, ludzi, 
-                    podróży i dotykania świata tam - gdzie - czuję sercem.
+                    Od dziecka towarzyszyła mi wysoka energia, miłość do pasji, sportu, ludzi,
+                    podróży i dotykania świata tam — gdzie czuję sercem.
                   </p>
                   <p>
-                    Zawsze kiełkowały we mnie poszukiwania. Poszukiwania dobrych relacji i pytanie: 
-                    „jak?" - jak rozumieć, jak budować, jak działać, by móc żyć w zgodzie ze sobą 
-                    i tworzyć to, co czuję intuicją i sercem. Tworzyć to - co prawdziwie wspiera
-                    i rozpala własny potencjał.
+                    Zawsze kiełkowały we mnie poszukiwania. Poszukiwania dobrych relacji i pytanie:
+                    „jak?" — jak rozumieć, jak budować, jak działać, by móc żyć w zgodzie ze sobą
+                    i tworzyć to, co czuję intuicją i sercem.
                   </p>
-                  <p className="font-medium text-foreground">
-                    Mentor holistyczny i biznesowy, konsultant edukacyjny, trener, towarzysz - 
+                  <p className="font-medium" style={{ color: C.espresso }}>
+                    Mentor holistyczny i biznesowy, konsultant edukacyjny, trener, towarzysz —
                     to moja pasja, która stała się zawodem.
                   </p>
                 </div>
-              </motion.div>
+              </FadeUp>
             </div>
-
-            {/* Extended content */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6,
-            delay: 0.4
-          }} className="space-y-6 text-muted-foreground leading-relaxed mb-16 -mt-2">
-              <p>
-                Bazuję na nurcie TSR, przez co w swojej pracy koncentruję się na rozwiązaniach, 
-                możliwościach i tym, co już działa - zamiast analizować trudności. Stawiam na małe, 
-                codzienne możliwe na już do wdrożenia kroki, które prowadzą do realnych i trwałych efektów.
-              </p>
-              <p>
-                Łączę psychologię, ekonomię, świadomy ruch, żywienie funkcjonalne i suplementację - 
-                by tworzyć procesy i narzędzia dające długofalową efektywność, stabilność i rozwój 
-                w zgodzie z własnym potencjałem.
-              </p>
-              <p className="font-medium text-foreground">
-                Jestem Twórczynią aplikacji Me2Me - systemu wspierającego codzienny rytm ciała, 
-                emocji, umysłu, a przede wszystkim skuteczności w działaniu.
-              </p>
-              <p>
-                W pracy kieruję się prostotą, wdrażalnością i efektem, który można poczuć w codzienności. 
-                Moje podejście jest wspierające i ukierunkowane na realną zmianę - krok po kroku, 
-                bez presji, w rytmie, który wzmacnia i czuciu, który jest dla mnie priorytetem.
-              </p>
-              <p>
-                We wszystkim co robię kieruję się strategią win-win, wygrany - wygrany, wiedząc,
-                że tylko wtedy, kiedy dwie strony odczuwają swoje zasoby - powstają długofalowe,
-                dobre, pożądane efekty, sukcesy i nietuzinkowe projekty.
-              </p>
-            </motion.div>
-
-            {/* Invitation */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6,
-            delay: 0.5
-          }} className="bg-card rounded-3xl p-10 border border-border/50 text-center">
-              <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
-                Zapraszam
-              </h3>
-              <p className="text-lg text-muted-foreground mb-2">
-                Magda
-              </p>
-              <p className="text-soft-gold font-medium mb-8">
-                Mentor holistyczny i biznesowy
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button asChild variant="gold" size="lg">
-                  <Link to="/products/consultation">
-                    <Calendar className="w-5 h-5" />
-                    Umów konsultację 1:1
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href="https://api.whatsapp.com/send?phone=48785669901" target="_blank" rel="noreferrer">
-                    <MessageCircle className="w-5 h-5" />
-                    Napisz na WhatsApp
-                  </a>
-                </Button>
-              </div>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
-    </Layout>;
+
+      {/* Extended bio */}
+      <section style={{ backgroundColor: C.cream }} className="py-20 lg:py-28">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div className="max-w-[72ch] space-y-6 leading-relaxed" style={{ color: C.body }}>
+            <FadeUp>
+              <p>
+                Bazuję na nurcie TSR, przez co w swojej pracy koncentruję się na rozwiązaniach,
+                możliwościach i tym, co już działa — zamiast analizować trudności. Stawiam na małe,
+                codzienne, możliwe na już do wdrożenia kroki, które prowadzą do realnych i trwałych efektów.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.08}>
+              <p>
+                Łączę psychologię, ekonomię, świadomy ruch, żywienie funkcjonalne i suplementację —
+                by tworzyć procesy i narzędzia dające długofalową efektywność, stabilność i rozwój
+                w zgodzie z własnym potencjałem.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.12}>
+              <p className="font-medium" style={{ color: C.espresso }}>
+                Jestem Twórczynią aplikacji Me2Me — systemu wspierającego codzienny rytm ciała,
+                emocji, umysłu, a przede wszystkim skuteczności w działaniu.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.16}>
+              <p>
+                W pracy kieruję się prostotą, wdrażalnością i efektem, który można poczuć w codzienności.
+                Moje podejście jest wspierające i ukierunkowane na realną zmianę — krok po kroku,
+                bez presji, w rytmie, który wzmacnia.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.20}>
+              <p>
+                We wszystkim co robię kieruję się strategią win-win, wiedząc, że tylko wtedy,
+                gdy dwie strony odczuwają swoje zasoby, powstają długofalowe, dobre, pożądane efekty
+                i nietuzinkowe projekty.
+              </p>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ backgroundColor: C.ivory }} className="py-20 lg:py-28">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <FadeUp>
+            <div
+              className="rounded-[2rem] p-10 lg:p-14 text-center"
+              style={{ backgroundColor: C.parchment, boxShadow: `inset 0 1px 0 rgba(255,255,255,0.6)` }}
+            >
+              <h3
+                className="font-serif font-semibold mb-3"
+                style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", color: C.espresso }}
+              >
+                Zapraszam
+              </h3>
+              <p className="text-base mb-1" style={{ color: C.body }}>Magda</p>
+              <p className="text-sm font-medium mb-10" style={{ color: C.gold }}>
+                Mentor holistyczny i biznesowy
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/products/consultation"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold"
+                  style={{
+                    backgroundColor: C.espresso,
+                    color: "#F2E9DC",
+                    transition: `background-color 160ms cubic-bezier(${EASE.join(",")})`,
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#2e261c")}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = C.espresso)}
+                >
+                  <Calendar className="w-4 h-4" strokeWidth={2} />
+                  Umów konsultację 1:1
+                </Link>
+                <a
+                  href="https://api.whatsapp.com/send?phone=48785669901"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border"
+                  style={{
+                    borderColor: `${C.espresso}22`,
+                    color: C.espresso,
+                    transition: `border-color 160ms cubic-bezier(${EASE.join(",")})`,
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = `${C.espresso}44`)}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = `${C.espresso}22`)}
+                >
+                  <MessageCircle className="w-4 h-4" strokeWidth={2} />
+                  Napisz na WhatsApp
+                </a>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+    </Layout>
+  );
 };
+
 export default About;
