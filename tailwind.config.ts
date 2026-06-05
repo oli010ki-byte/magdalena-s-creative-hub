@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],
       },
       colors: {
@@ -27,6 +27,12 @@ export default {
         "warm-brown": "hsl(var(--warm-brown))",
         "soft-gold": "hsl(var(--soft-gold))",
         "light-beige": "hsl(var(--light-beige))",
+        // Premium landing palette
+        espresso: "#120E09",
+        "warm-cream": "#FDFAF4",
+        "warm-cream-2": "#F7F2EA",
+        "premium-gold": "#C9A96E",
+        "premium-gold-light": "#D4B87A",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -88,17 +94,36 @@ export default {
           "0%": { opacity: "0", transform: "scale(0.95)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-33.333%)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "scale-in": "scale-in 0.3s ease-out forwards",
+        marquee: "marquee 30s linear infinite",
+        "float-slow": "float-slow 7s ease-in-out infinite",
+        shimmer: "shimmer 2.5s linear infinite",
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",
         glow: "var(--shadow-glow)",
+        // Premium shadows
+        "bezel-dark": "0 0 0 1px rgba(255,255,255,0.06), 0 32px 64px -16px rgba(0,0,0,0.5)",
+        "bezel-light": "0 0 0 1px rgba(0,0,0,0.04), 0 20px 40px -12px rgba(18,14,9,0.12)",
+        "gold-glow": "0 0 60px rgba(201,169,110,0.15)",
       },
     },
   },

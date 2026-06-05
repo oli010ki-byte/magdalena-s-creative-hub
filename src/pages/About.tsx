@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Calendar, MessageCircle } from "lucide-react";
 import Layout from "@/components/Layout";
+import { Button } from "@/components/ui/button";
 import magdaPhoto from "@/assets/magda-photo.jpg";
 const About = () => {
   return <Layout>
@@ -15,7 +18,7 @@ const About = () => {
           duration: 0.6
         }} className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <span className="inline-block text-sm font-medium text-soft-gold mb-4 text-[#a09283] bg-[#dad3c8]">
+              <span className="inline-block text-sm font-medium px-4 py-1.5 rounded-full bg-secondary text-muted-foreground mb-4">
                 Poznaj mnie
               </span>
               <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
@@ -126,12 +129,23 @@ const About = () => {
               <p className="text-lg text-muted-foreground mb-2">
                 Magda
               </p>
-              <p className="text-soft-gold font-medium">
+              <p className="text-soft-gold font-medium mb-8">
                 Mentor holistyczny i biznesowy
               </p>
-              <p className="text-accent font-semibold mt-2">
-                Me2Me
-              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button asChild variant="gold" size="lg">
+                  <Link to="/products/consultation">
+                    <Calendar className="w-5 h-5" />
+                    Umów konsultację 1:1
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <a href="https://api.whatsapp.com/send?phone=48785669901" target="_blank" rel="noreferrer">
+                    <MessageCircle className="w-5 h-5" />
+                    Napisz na WhatsApp
+                  </a>
+                </Button>
+              </div>
             </motion.div>
           </motion.div>
         </div>
