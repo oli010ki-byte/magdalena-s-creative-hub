@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Smartphone, Heart, Target, Zap, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
+import me2me2 from "@/assets/me2me/me2me-2.png";
+import me2me1 from "@/assets/me2me/me2me-1.png";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
@@ -181,125 +183,178 @@ const Me2Me = () => {
                 }}
               >
                 <div
-                  className="aspect-[9/19.5] rounded-[calc(3.2rem-8px)] overflow-hidden"
-                  style={{ backgroundColor: "#1A1108" }}
+                  className="aspect-[9/19.5] rounded-[calc(3.2rem-8px)] overflow-hidden flex flex-col relative"
+                  style={{ backgroundColor: "#1A1108", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
-                  <svg viewBox="0 0 220 478" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                    <defs>
-                      <radialGradient id="g1" cx="50%" cy="0%" r="70%">
-                        <stop offset="0%" stopColor="#9C7B59" stopOpacity="0.14"/>
-                        <stop offset="100%" stopColor="#9C7B59" stopOpacity="0"/>
-                      </radialGradient>
-                      <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#C4A47A"/>
-                        <stop offset="100%" stopColor="#9C7B59"/>
-                      </linearGradient>
-                    </defs>
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 rounded-b-lg"
+                    style={{ width: 68, height: 10, backgroundColor: "#0E0B05" }} />
 
-                    {/* Background + warm glow */}
-                    <rect width="220" height="478" fill="#1A1108"/>
-                    <rect width="220" height="220" fill="url(#g1)"/>
+                  {/* Status bar */}
+                  <div className="flex-shrink-0 flex justify-between items-center px-4 pt-3 pb-1">
+                    <span style={{ fontSize: 8, fontWeight: 600, color: "rgba(247,241,232,0.5)" }}>9:41</span>
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex items-end gap-[2px]">
+                        {[4, 6, 8].map((h, i) => (
+                          <div key={i} style={{ width: 3, height: h, borderRadius: 1, backgroundColor: "rgba(247,241,232,0.38)" }} />
+                        ))}
+                      </div>
+                      <div className="relative" style={{ width: 22, height: 11 }}>
+                        <div className="absolute inset-0 rounded" style={{ border: "1px solid rgba(247,241,232,0.28)" }} />
+                        <div className="absolute" style={{ top: 2, left: 2, right: 5, bottom: 2, borderRadius: 1, backgroundColor: "rgba(156,123,89,0.7)" }} />
+                        <div className="absolute" style={{ top: 3, right: -3, width: 2.5, height: 5, borderRadius: 1, backgroundColor: "rgba(247,241,232,0.28)" }} />
+                      </div>
+                    </div>
+                  </div>
 
-                    {/* Status bar */}
-                    <text x="18" y="22" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7.5" fontWeight="600" fill="#F7F1E8" fillOpacity="0.5">9:41</text>
-                    <rect x="168" y="14" width="24" height="9.5" rx="2.8" stroke="#F7F1E8" strokeOpacity="0.22" strokeWidth="1" fill="none"/>
-                    <rect x="192.5" y="17" width="2" height="4" rx="1" fill="#F7F1E8" fillOpacity="0.22"/>
-                    <rect x="169.5" y="15.5" width="17" height="6.5" rx="2" fill="#9C7B59" fillOpacity="0.65"/>
-                    <rect x="157" y="17" width="3" height="5.5" rx="1.5" fill="#F7F1E8" fillOpacity="0.22"/>
-                    <rect x="162" y="15.5" width="3" height="7" rx="1.5" fill="#F7F1E8" fillOpacity="0.22"/>
+                  {/* Header */}
+                  <div className="flex-shrink-0 flex justify-between items-center px-4 pb-2">
+                    <span style={{ fontFamily: "'Playfair Display',serif", fontSize: 20, fontWeight: 700, color: "#F7F1E8", letterSpacing: "-0.5px" }}>
+                      Me2Me
+                    </span>
+                    <div className="rounded-full flex items-center justify-center"
+                      style={{ width: 32, height: 32, backgroundColor: "rgba(156,123,89,0.18)", border: "1px solid rgba(156,123,89,0.3)" }}>
+                      <span style={{ fontSize: 8, fontWeight: 700, color: "#9C7B59" }}>MZ</span>
+                    </div>
+                  </div>
 
-                    {/* Pill notch */}
-                    <rect x="76" y="7" width="68" height="10" rx="5" fill="#0E0B05"/>
+                  {/* Progress card */}
+                  <div className="flex-shrink-0 mx-3 rounded-2xl p-3 flex items-center gap-3"
+                    style={{ backgroundColor: "rgba(247,241,232,0.05)", border: "1px solid rgba(247,241,232,0.07)" }}>
+                    <svg width="60" height="60" viewBox="0 0 60 60" style={{ flexShrink: 0 }}>
+                      <circle cx="30" cy="30" r="24" stroke="rgba(247,241,232,0.08)" strokeWidth="4.5" fill="none"/>
+                      <circle cx="30" cy="30" r="24" stroke="#9C7B59" strokeWidth="4.5"
+                        strokeDasharray="101 50" strokeDashoffset="-25" strokeLinecap="round" fill="none"/>
+                      <text x="30" y="27" textAnchor="middle" fontSize="14" fontWeight="700" fill="#F7F1E8"
+                        fontFamily="'Plus Jakarta Sans',sans-serif">14</text>
+                      <text x="30" y="38" textAnchor="middle" fontSize="5.5" fill="rgba(247,241,232,0.38)"
+                        fontFamily="'Plus Jakarta Sans',sans-serif">z 21 dni</text>
+                    </svg>
+                    <div>
+                      <div style={{ fontSize: 6, fontWeight: 700, color: "#9C7B59", letterSpacing: "0.13em", marginBottom: 3 }}>DZIEN PROGRAMU</div>
+                      <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 13, fontWeight: 700, color: "#F7F1E8", lineHeight: 1.2, marginBottom: 3 }}>Tydzien 2 · War. A</div>
+                      <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.36)", marginBottom: 5 }}>Seria: 7 dni z rzedu</div>
+                      <div className="inline-flex items-center px-2 py-1 rounded-full"
+                        style={{ backgroundColor: "rgba(156,123,89,0.18)", border: "1px solid rgba(156,123,89,0.28)" }}>
+                        <span style={{ fontSize: 6, fontWeight: 600, color: "#9C7B59" }}>Kontynuuj streak</span>
+                      </div>
+                    </div>
+                  </div>
 
-                    {/* Header */}
-                    <text x="18" y="56" fontFamily="'Playfair Display',Georgia,serif" fontSize="22" fontWeight="700" fill="#F7F1E8" letterSpacing="-0.6">Me2Me</text>
-                    <circle cx="88" cy="50" r="3.5" fill="#9C7B59"/>
-                    <circle cx="200" cy="49" r="16" fill="rgba(156,123,89,0.15)" stroke="rgba(156,123,89,0.3)" strokeWidth="1"/>
-                    <text x="193.5" y="53.5" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8" fontWeight="700" fill="#9C7B59">MZ</text>
+                  {/* Section label */}
+                  <div className="flex-shrink-0 flex items-center gap-2 px-4 pt-3 pb-2">
+                    <span style={{ fontSize: 7, fontWeight: 700, color: "rgba(156,123,89,0.75)", letterSpacing: "0.16em", whiteSpace: "nowrap" }}>TWOJ PROGRAM</span>
+                    <div className="flex-1" style={{ height: 1, backgroundColor: "rgba(156,123,89,0.2)" }} />
+                  </div>
 
-                    {/* Progress hero card */}
-                    <rect x="12" y="67" width="196" height="112" rx="20" fill="rgba(247,241,232,0.05)" stroke="rgba(247,241,232,0.07)" strokeWidth="1"/>
+                  {/* Module list */}
+                  <div className="flex-1 overflow-hidden px-3 flex flex-col gap-1.5">
 
-                    {/* Progress ring */}
-                    <circle cx="58" cy="123" r="30" stroke="rgba(247,241,232,0.07)" strokeWidth="5" fill="none"/>
-                    <circle cx="58" cy="123" r="30" stroke="url(#ring)" strokeWidth="5" strokeDasharray="126 62" strokeDashoffset="31" strokeLinecap="round" fill="none"/>
-                    <text x="58" y="120" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="14" fontWeight="700" fill="#F7F1E8" textAnchor="middle">14</text>
-                    <text x="58" y="133" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="500" fill="#F7F1E8" fillOpacity="0.35" textAnchor="middle">z 21 dni</text>
+                    {/* WSTEP — ukonczone */}
+                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
+                      style={{ backgroundColor: "rgba(74,222,128,0.04)", border: "1px solid rgba(74,222,128,0.08)" }}>
+                      <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ width: 42, height: 42 }}>
+                        <img src={me2me2} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "13% 35%" }} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div style={{ fontSize: 8, fontWeight: 600, color: "rgba(247,241,232,0.55)", marginBottom: 2 }}>Wstep do programu</div>
+                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.25)" }}>O mnie · Nawyki · Suplementy</div>
+                      </div>
+                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
+                        style={{ width: 38, height: 16, backgroundColor: "rgba(74,222,128,0.1)" }}>
+                        <span style={{ fontSize: 6, fontWeight: 600, color: "#4ADE80" }}>Gotowe</span>
+                      </div>
+                    </div>
 
-                    {/* Card text */}
-                    <text x="103" y="88" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="700" fill="#9C7B59" letterSpacing="0.13em">DZIEN PROGRAMU</text>
-                    <text x="103" y="105" fontFamily="'Playfair Display',Georgia,serif" fontSize="12" fontWeight="700" fill="#F7F1E8">Tydzien 2 · War. A</text>
-                    <text x="103" y="119" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.36">Seria: 7 dni z rzedu</text>
-                    <rect x="103" y="128" width="64" height="16" rx="8" fill="rgba(156,123,89,0.18)" stroke="rgba(156,123,89,0.28)" strokeWidth="1"/>
-                    <text x="135" y="139" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="600" fill="#9C7B59" textAnchor="middle">Kontynuuj streak</text>
+                    {/* DZIEN 14 — aktywny */}
+                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
+                      style={{ backgroundColor: "rgba(156,123,89,0.1)", border: "1px solid rgba(156,123,89,0.4)" }}>
+                      <div className="rounded-xl overflow-hidden flex-shrink-0 relative" style={{ width: 42, height: 42 }}>
+                        <img src={me2me2} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "36% 35%" }} />
+                        <div className="absolute inset-0 flex items-center justify-center"
+                          style={{ backgroundColor: "rgba(28,22,16,0.38)" }}>
+                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <circle cx="9" cy="9" r="9" fill="rgba(156,123,89,0.85)"/>
+                            <path d="M7 6 L7 12 L13 9 Z" fill="#F7F1E8"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="inline-flex mb-1 rounded-full px-1.5 py-0.5"
+                          style={{ backgroundColor: "rgba(156,123,89,0.25)" }}>
+                          <span style={{ fontSize: 5.5, fontWeight: 700, color: "#9C7B59", letterSpacing: "0.1em" }}>DZISIAJ</span>
+                        </div>
+                        <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 9.5, fontWeight: 700, color: "#F7F1E8", marginBottom: 1 }}>Dzien 14</div>
+                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.42)" }}>Tydzien 2 · Wariant A</div>
+                      </div>
+                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
+                        style={{ width: 38, height: 16, backgroundColor: "rgba(156,123,89,0.32)" }}>
+                        <span style={{ fontSize: 6.5, fontWeight: 700, color: "#9C7B59" }}>Zacznij</span>
+                      </div>
+                    </div>
 
-                    {/* Section label */}
-                    <text x="18" y="196" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="7" fontWeight="700" fill="#9C7B59" fillOpacity="0.75" letterSpacing="0.16em">TWOJ PROGRAM</text>
-                    <rect x="18" y="200" width="46" height="2" rx="1" fill="#9C7B59" fillOpacity="0.45"/>
+                    {/* DZIEN 15 — jutro */}
+                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
+                      style={{ backgroundColor: "rgba(247,241,232,0.03)", border: "1px solid rgba(247,241,232,0.05)" }}>
+                      <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ width: 42, height: 42, opacity: 0.45 }}>
+                        <img src={me2me2} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "57% 35%" }} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div style={{ fontSize: 8, fontWeight: 600, color: "rgba(247,241,232,0.3)", marginBottom: 2 }}>Dzien 15</div>
+                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.18)" }}>Ksztaltowanie nawykow</div>
+                      </div>
+                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
+                        style={{ width: 38, height: 16, backgroundColor: "rgba(247,241,232,0.05)" }}>
+                        <span style={{ fontSize: 6, fontWeight: 600, color: "rgba(247,241,232,0.28)" }}>Jutro</span>
+                      </div>
+                    </div>
 
-                    {/* Module 1 — WSTEP (completed) */}
-                    <rect x="12" y="208" width="196" height="44" rx="14" fill="rgba(247,241,232,0.04)" stroke="rgba(74,222,128,0.1)" strokeWidth="1"/>
-                    <circle cx="35" cy="230" r="13" fill="rgba(74,222,128,0.08)"/>
-                    <path d="M29.5 230 L33.5 234.5 L41.5 224" stroke="#4ADE80" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    <text x="56" y="225" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8.5" fontWeight="600" fill="#F7F1E8" fillOpacity="0.55">Wstep do programu</text>
-                    <text x="56" y="238" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.25">O mnie · Nawyki · Suplementy</text>
-                    <rect x="162" y="222" width="38" height="15" rx="7.5" fill="rgba(74,222,128,0.1)"/>
-                    <text x="181" y="232.5" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="600" fill="#4ADE80" textAnchor="middle">Gotowe</text>
+                    {/* TYDZIEN 3 — zablokowany */}
+                    <div className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 flex-shrink-0"
+                      style={{ backgroundColor: "rgba(247,241,232,0.02)", border: "1px solid rgba(247,241,232,0.04)" }}>
+                      <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ width: 42, height: 42, opacity: 0.25 }}>
+                        <img src={me2me1} alt="" className="w-full h-full" style={{ objectFit: "cover", objectPosition: "40% 75%" }} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 9, fontWeight: 700, color: "rgba(247,241,232,0.2)", marginBottom: 2 }}>Tydzien 3</div>
+                        <div style={{ fontSize: 6.5, color: "rgba(247,241,232,0.14)" }}>Stabilnosc i trwale efekty</div>
+                      </div>
+                      <div className="flex-shrink-0 rounded-full flex items-center justify-center"
+                        style={{ width: 44, height: 16, backgroundColor: "rgba(247,241,232,0.04)" }}>
+                        <span style={{ fontSize: 6, fontWeight: 600, color: "rgba(247,241,232,0.2)" }}>Odblokuj</span>
+                      </div>
+                    </div>
+                  </div>
 
-                    {/* Module 2 — DZIEN 14 (ACTIVE TODAY, gold) */}
-                    <rect x="12" y="258" width="196" height="52" rx="14" fill="rgba(156,123,89,0.1)" stroke="rgba(156,123,89,0.4)" strokeWidth="1"/>
-                    {/* "DZISIAJ" pill */}
-                    <rect x="56" y="262" width="36" height="13" rx="6.5" fill="rgba(156,123,89,0.28)"/>
-                    <text x="74" y="271.5" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="700" fill="#9C7B59" textAnchor="middle" letterSpacing="0.1em">DZISIAJ</text>
-                    {/* gold play circle */}
-                    <circle cx="35" cy="285" r="14" fill="rgba(156,123,89,0.22)" stroke="rgba(156,123,89,0.45)" strokeWidth="1"/>
-                    <path d="M30.5 280.5 L30.5 289.5 L41 285 Z" fill="#9C7B59" fillOpacity="0.9"/>
-                    <text x="56" y="281" fontFamily="'Playfair Display',Georgia,serif" fontSize="10" fontWeight="700" fill="#F7F1E8">Dzien 14</text>
-                    <text x="56" y="293" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.45">Tydzien 2 · Zamiana kontra zakaz</text>
-                    <rect x="162" y="277" width="38" height="16" rx="8" fill="rgba(156,123,89,0.3)"/>
-                    <text x="181" y="288" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fontWeight="700" fill="#9C7B59" textAnchor="middle">Zacznij</text>
+                  {/* Bottom nav */}
+                  <div className="flex-shrink-0 mx-3 my-2 rounded-2xl flex items-center justify-around"
+                    style={{ height: 46, backgroundColor: "rgba(247,241,232,0.055)", border: "1px solid rgba(247,241,232,0.08)" }}>
+                    <div className="rounded-xl flex items-center justify-center"
+                      style={{ width: 40, height: 34, backgroundColor: "rgba(156,123,89,0.2)" }}>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 7 L8 2 L14 7 L14 14 L10 14 L10 10 L6 10 L6 14 L2 14 Z"
+                          stroke="#9C7B59" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="rgba(156,123,89,0.2)"/>
+                      </svg>
+                    </div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="5.5" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3"/>
+                      <path d="M8 5.5 L8 10.5 M5.5 8 L10.5 8" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3" strokeLinecap="round"/>
+                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <rect x="2" y="4" width="12" height="1.5" rx="0.75" fill="rgba(247,241,232,0.18)"/>
+                      <rect x="2" y="7.25" width="9" height="1.5" rx="0.75" fill="rgba(247,241,232,0.18)"/>
+                      <rect x="2" y="10.5" width="11" height="1.5" rx="0.75" fill="rgba(247,241,232,0.18)"/>
+                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="5.5" r="2.8" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3"/>
+                      <path d="M2 14 C2 11 4.5 9.5 8 9.5 C11.5 9.5 14 11 14 14" stroke="rgba(247,241,232,0.2)" strokeWidth="1.3" strokeLinecap="round"/>
+                    </svg>
+                  </div>
 
-                    {/* Module 3 — DZIEN 15 (tomorrow) */}
-                    <rect x="12" y="316" width="196" height="44" rx="14" fill="rgba(247,241,232,0.03)" stroke="rgba(247,241,232,0.05)" strokeWidth="1"/>
-                    <circle cx="35" cy="338" r="13" fill="rgba(247,241,232,0.05)"/>
-                    {/* calendar icon */}
-                    <rect x="28.5" y="331.5" width="13" height="13" rx="3" stroke="#F7F1E8" strokeOpacity="0.2" strokeWidth="1.2" fill="none"/>
-                    <rect x="31.5" y="334.5" width="7" height="1.5" rx="0.75" fill="#F7F1E8" fillOpacity="0.18"/>
-                    <rect x="31.5" y="337.5" width="5" height="1.5" rx="0.75" fill="#F7F1E8" fillOpacity="0.18"/>
-                    <rect x="31.5" y="340.5" width="6" height="1.5" rx="0.75" fill="#F7F1E8" fillOpacity="0.18"/>
-                    <text x="56" y="333" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="8.5" fontWeight="600" fill="#F7F1E8" fillOpacity="0.35">Dzien 15</text>
-                    <text x="56" y="346" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.2">Ksztaltowanie nawykow</text>
-                    <rect x="162" y="330" width="38" height="15" rx="7.5" fill="rgba(247,241,232,0.05)"/>
-                    <text x="181" y="340.5" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="600" fill="#F7F1E8" fillOpacity="0.25" textAnchor="middle">Jutro</text>
-
-                    {/* Module 4 — TYDZIEN 3 (locked/upcoming) */}
-                    <rect x="12" y="366" width="196" height="44" rx="14" fill="rgba(247,241,232,0.02)" stroke="rgba(247,241,232,0.04)" strokeWidth="1"/>
-                    <circle cx="35" cy="388" r="13" fill="rgba(247,241,232,0.03)"/>
-                    {/* lock icon */}
-                    <rect x="30" y="387" width="10" height="8" rx="2" stroke="#F7F1E8" strokeOpacity="0.15" strokeWidth="1.2" fill="none"/>
-                    <path d="M32 387 C32 384 38 384 38 387" stroke="#F7F1E8" strokeOpacity="0.15" strokeWidth="1.2" fill="none"/>
-                    <circle cx="35" cy="391.5" r="1.5" fill="#F7F1E8" fillOpacity="0.15"/>
-                    <text x="56" y="383" fontFamily="'Playfair Display',Georgia,serif" fontSize="9" fontWeight="700" fill="#F7F1E8" fillOpacity="0.25">Tydzien 3</text>
-                    <text x="56" y="396" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6.5" fill="#F7F1E8" fillOpacity="0.18">Stabilnosc i trwale efekty</text>
-                    <rect x="153" y="380" width="48" height="15" rx="7.5" fill="rgba(247,241,232,0.04)"/>
-                    <text x="177" y="390.5" fontFamily="'Plus Jakarta Sans',sans-serif" fontSize="6" fontWeight="600" fill="#F7F1E8" fillOpacity="0.2" textAnchor="middle">Odblokuj</text>
-
-                    {/* Bottom nav */}
-                    <rect x="12" y="414" width="196" height="46" rx="16" fill="rgba(247,241,232,0.055)" stroke="rgba(247,241,232,0.08)" strokeWidth="1"/>
-                    <rect x="20" y="420" width="40" height="34" rx="12" fill="rgba(156,123,89,0.2)"/>
-                    <path d="M35 449 L35 443 L40 438 L45 443 L45 449" stroke="#9C7B59" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="rgba(156,123,89,0.18)"/>
-                    <rect x="38" y="444" width="4" height="5" rx="1.5" fill="#9C7B59" fillOpacity="0.55"/>
-                    <circle cx="96" cy="437" r="7" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" fill="none"/>
-                    <path d="M96 433 L96 441 M92 437 L100 437" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" strokeLinecap="round"/>
-                    <rect x="130" y="433" width="15" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
-                    <rect x="130" y="439" width="11" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
-                    <rect x="130" y="445" width="13" height="3.5" rx="1.75" fill="#F7F1E8" fillOpacity="0.13"/>
-                    <circle cx="184" cy="437" r="7" stroke="#F7F1E8" strokeOpacity="0.18" strokeWidth="1.4" fill="none"/>
-                    <circle cx="184" cy="435" r="2.5" fill="#F7F1E8" fillOpacity="0.18"/>
-
-                    {/* Home indicator */}
-                    <rect x="84" y="470" width="52" height="4" rx="2" fill="#F7F1E8" fillOpacity="0.1"/>
-                  </svg>
+                  {/* Home indicator */}
+                  <div className="flex-shrink-0 flex justify-center mb-2">
+                    <div className="rounded-full" style={{ width: 52, height: 4, backgroundColor: "rgba(247,241,232,0.1)" }} />
+                  </div>
                 </div>
               </div>
             </motion.div>
