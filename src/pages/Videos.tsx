@@ -78,7 +78,7 @@ const Videos = () => {
               Multimedia
             </motion.span>
 
-            <div className="overflow-hidden">
+            <div>
               <motion.h1
                 variants={{
                   hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },

@@ -73,7 +73,7 @@ const Me2Me = () => {
                 Autorska aplikacja
               </motion.span>
 
-              <div className="overflow-hidden mb-4">
+              <div className="mb-4">
                 <motion.h1
                   variants={{
                     hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },

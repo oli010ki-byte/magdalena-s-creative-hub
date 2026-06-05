@@ -78,7 +78,7 @@ const ForeverProducts = () => {
               Naturalna suplementacja
             </motion.span>
 
-            <div className="overflow-hidden mb-8">
+            <div className="mb-8">
               <motion.h1
                 variants={{
                   hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },
