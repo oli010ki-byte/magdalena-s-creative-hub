@@ -56,16 +56,16 @@ const About = () => {
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     Od dziecka towarzyszyła mi wysoka energia, miłość do pasji, sportu, ludzi, 
-                    podróży i dotykania świata tam — gdzie — czuję sercem.
+                    podróży i dotykania świata tam - gdzie - czuję sercem.
                   </p>
                   <p>
                     Zawsze kiełkowały we mnie poszukiwania. Poszukiwania dobrych relacji i pytanie: 
-                    „jak?" — jak rozumieć, jak budować, jak działać, by móc żyć w zgodzie ze sobą 
-                    i tworzyć to, co czuję intuicją i sercem. Tworzyć to — co prawdziwie wspiera 
+                    „jak?" - jak rozumieć, jak budować, jak działać, by móc żyć w zgodzie ze sobą 
+                    i tworzyć to, co czuję intuicją i sercem. Tworzyć to - co prawdziwie wspiera
                     i rozpala własny potencjał.
                   </p>
                   <p className="font-medium text-foreground">
-                    Mentor holistyczny i biznesowy, konsultant edukacyjny, trener, towarzysz — 
+                    Mentor holistyczny i biznesowy, konsultant edukacyjny, trener, towarzysz - 
                     to moja pasja, która stała się zawodem.
                   </p>
                 </div>
@@ -85,26 +85,26 @@ const About = () => {
           }} className="space-y-6 text-muted-foreground leading-relaxed mb-16 -mt-2">
               <p>
                 Bazuję na nurcie TSR, przez co w swojej pracy koncentruję się na rozwiązaniach, 
-                możliwościach i tym, co już działa — zamiast analizować trudności. Stawiam na małe, 
+                możliwościach i tym, co już działa - zamiast analizować trudności. Stawiam na małe, 
                 codzienne możliwe na już do wdrożenia kroki, które prowadzą do realnych i trwałych efektów.
               </p>
               <p>
-                Łączę psychologię, ekonomię, świadomy ruch, żywienie funkcjonalne i suplementację — 
+                Łączę psychologię, ekonomię, świadomy ruch, żywienie funkcjonalne i suplementację - 
                 by tworzyć procesy i narzędzia dające długofalową efektywność, stabilność i rozwój 
                 w zgodzie z własnym potencjałem.
               </p>
               <p className="font-medium text-foreground">
-                Jestem Twórczynią aplikacji Me2Me — systemu wspierającego codzienny rytm ciała, 
+                Jestem Twórczynią aplikacji Me2Me - systemu wspierającego codzienny rytm ciała, 
                 emocji, umysłu, a przede wszystkim skuteczności w działaniu.
               </p>
               <p>
                 W pracy kieruję się prostotą, wdrażalnością i efektem, który można poczuć w codzienności. 
-                Moje podejście jest wspierające i ukierunkowane na realną zmianę — krok po kroku, 
+                Moje podejście jest wspierające i ukierunkowane na realną zmianę - krok po kroku, 
                 bez presji, w rytmie, który wzmacnia i czuciu, który jest dla mnie priorytetem.
               </p>
               <p>
-                We wszystkim co robię kieruję się strategią win-win, wygrany — wygrany, wiedząc, 
-                że tylko wtedy, kiedy dwie strony odczuwają swoje zasoby — powstają długofalowe, 
+                We wszystkim co robię kieruję się strategią win-win, wygrany - wygrany, wiedząc,
+                że tylko wtedy, kiedy dwie strony odczuwają swoje zasoby - powstają długofalowe,
                 dobre, pożądane efekty, sukcesy i nietuzinkowe projekty.
               </p>
             </motion.div>

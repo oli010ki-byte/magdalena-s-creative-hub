@@ -66,7 +66,7 @@ const ForeverProducts = () => {
               className="bg-secondary/50 rounded-3xl p-8 md:p-10 border border-border/30 mb-16 max-w-3xl"
             >
               <p className="text-foreground/80 text-lg leading-relaxed mb-6">
-                Jeśli chcesz zaopatrzyć się w produkty bez zakładania numeru klienta — 
+                Jeśli chcesz zaopatrzyć się w produkty bez zakładania numeru klienta - 
                 wejdź w link gościa do mojego sklepu internetowego, zapraszam serdecznie!
               </p>
               <p className="text-muted-foreground mb-8">

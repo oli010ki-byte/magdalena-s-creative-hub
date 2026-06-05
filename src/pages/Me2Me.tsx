@@ -68,7 +68,7 @@ const Me2Me = () => {
                   21-31 dni holistycznego kształtowania nawyków
                 </p>
                 <p className="text-lg text-foreground/70 italic font-light tracking-wide">
-                  Od Siebie — dla Siebie — z Sobą
+                  Od Siebie - dla Siebie - z Sobą
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
                   Aktywne Ciało • Stabilne emocje • Prawdziwe Relacje
